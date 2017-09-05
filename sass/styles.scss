@@ -5,7 +5,7 @@
 
 // Enables for Tribune colors, but is required for everything.
 @import 'base-variables';
-@import 'bootstrap_custom_variables';
+// @import 'bootstrap_custom_variables';
 // Breakpoints
 $tablet-min-width:450px;
 $desktop-min-width:850px;
@@ -26,11 +26,11 @@ $header-bg-color:$trib-gray4;
 @import 'base-mixins';
 // ---- MAKE OR IMPORT MORE MIXINS HERE ---------------------------------------------
 
-// @import 'property-tax-mixins';
+@import 'water-mixins';
 
 // ---- BRING IN THE BOOTSTRAP ---------------------------------------------
 
-@import 'bootstrap_custom';
+// @import 'bootstrap_custom';
 
 
 // ---- TRIB CLASSES, UNCOMMENT THE ONES YOU WANT ---------------------------------------------
@@ -53,17 +53,15 @@ $header-bg-color:$trib-gray4;
 // @import '../node_modules/swiper/dist/css/swiper.min';
 
 
-// @import 'adverts';
-// @import 'typography-prop-tax';
-// @import 'nav';
-// @import 'pullquote';
-// @import 'story-header';
-// @import 'social-menu';
-// @import 'credits';
-// @import 'graphic-embed';
-// @import 'header-video';
-// @import 'videos';
-// @import 'day1_header';
+@import 'adverts';
+@import 'typography';
+@import 'nav';
+@import 'pullquote';
+@import 'story-header';
+@import 'social-menu';
+@import 'credits';
+@import 'graphic-embed';
+@import 'videos';
 
 // ---- WRITE MORE PROJECT STYLES HERE ---------------------------------------------
 

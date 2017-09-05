@@ -1,0 +1,75 @@
+$chart-margin:25px;
+.chart{
+	margin-top:$chart-margin;
+	margin-bottom:$chart-margin;
+	position:relative;	
+	overflow:hidden;
+}
+
+.chart__spinner{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin: -10px 0 0 -10px;
+}
+
+.image{
+	@include trib-image();
+
+	figcaption p{
+		@include agate();
+	}
+}
+
+.spinner{
+	display: flex;
+	justify-content:center;
+	align-items:center;
+
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+
+	&__background{
+		background:rgba($trib-blue2, .2);
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+
+	}
+
+	&__icon{
+		 color:$trib-blue2;
+	}
+}
+
+
+@media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
+	.chart--right{
+		width: 260px; //  this is different than the noteched width b/c some charts are built to this exact width on mobile.
+		float: right;
+		margin: $chart-margin 0 $chart-margin $chart-margin;
+	}
+
+	.image--right{
+		max-width: $notched_width;
+		float: right;
+		margin: 3px 0 $chart-margin $chart-margin; // Gives it a little nudge from the margin-top to align with <p>
+	}
+}
+
+
+
+@media all and (min-width: $tablet-min-width){
+
+
+}
+
+
+@media all and (min-width: $desktop-min-width){
+
+}

@@ -1,0 +1,34 @@
+.advert{
+	margin:10px 0;
+	&[data-ad-type="leaderboard"]{
+		
+	}
+
+	&[data-ad-type="shrinky-cube"]{
+		// width: 300px;
+
+		&.advert--right{
+			// float:right;
+			// margin: 0 0 25px 25px;
+		}
+	}
+}
+
+
+
+@media all and (min-width:769px){
+	.advert{
+		&[data-ad-type="leaderboard"]{
+			// margin:15px 0;
+		}
+
+		&[data-ad-type="shrinky-cube"]{
+			width: 300px;
+
+			&.advert--right{
+				float:right;
+				margin: 0 0 25px 25px;
+			}
+		}
+	}
+}

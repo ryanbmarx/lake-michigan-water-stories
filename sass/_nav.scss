@@ -1,0 +1,226 @@
+$space_between_mobile_buttons: 15px;
+
+// Give the navbar space to exist without overlapping anything at the top of the page.
+body{
+	padding-top:$nav_height;
+}
+
+// .dropdown-wrapper{ display:none } // hide until tablet
+
+.navbar{
+	background: rgba($trib-blue2, .92);
+	box-shadow: 0 2px 6px rgba(black, .35);
+
+	.navbar-toggle{
+		display:block;
+	}
+}
+
+// Adjustments to the logo
+.navbar > .container, 
+.navbar > .container-fluid {
+	.navbar-brand{
+		display:none;
+		margin-left:0;
+		padding: 15px 15px 15px 0;
+		width: 175px;
+	}
+}
+
+
+nav.navbar {min-height: $nav_height;}
+
+.navbar .navbar-toggle:hover, 
+.navbar .dropdown-toggle:hover, 
+.navbar .navbar-toggle:focus, 
+.navbar .dropdown-toggle:focus { background: rgba(black, .4); }
+
+// Adjustments to mobile nav button toggle
+.navbar-toggle {
+	border-color:white;
+	float: left;
+	margin-left: 15px;
+	.icon-bar{
+		background:white;
+	}
+}
+
+
+.nav-buttons-wrapper{
+    // POSITIONING
+    position: absolute;
+    top: -700px;
+    opacity:0;
+    top: $nav_height;
+    left: -100%;
+    width: 100%;
+    height:auto;
+    max-width: 400px;
+    max-height: calc(100vh - #{$nav_height});
+    transition:left 400ms ease, opacity 400ms ease;
+    background:$trib-blue2;
+	overflow-y:scroll;
+
+}
+
+#toggle{
+	display:none;
+	&:checked{
+		
+
+		& ~ .nav-buttons-wrapper{
+	    	left:0;
+	    	opacity:1;
+	    	transition:left 400ms ease, opacity 400ms ease;		
+		}
+	}
+
+}
+
+
+
+.navbar .navbar-toggle label{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	cursor:pointer;
+}
+
+.nav-buttons{
+	// STYLING
+	margin:0;
+	padding:$space_between_mobile_buttons;
+	list-style-type: none;
+
+	li{
+		// padding-bottom:$space_between_mobile_buttons;
+		margin-bottom:$space_between_mobile_buttons;
+		// border-bottom:1px solid rgba(white, .5);
+		&:last-child {
+	 		// This strips the styling from the last menu item.
+	 		margin-bottom:0;
+	 		border-bottom:none;
+	 	}   
+	 }
+	}
+
+	.nav-button{
+		@include sans-serif-text(14px, 1em);
+		color:white;
+		display:block;
+		text-align: center;
+		background: rgba(white,.2);
+		padding: 25px 0;
+		border-radius: 5px;
+	}
+
+
+@media all and (min-width: $tablet-min-width){
+	
+}
+
+// .nav .dropdown{
+// 	select{
+//  -webkit-appearance: none;  /*REMOVES DEFAULT CHROME & SAFARI STYLE*/
+//  -moz-appearance: none;  /*REMOVES DEFAULT FIREFOX STYLE*/
+//  border: 0 !important;  REMOVES BORDER
+
+//  background-color: #0d98e8;
+//  color: #fff;
+//  -webkit-border-radius: 5px;
+//  border-radius: 5px;
+//  font-size: 14px;
+//  padding: 10px;
+//  width: 35%;
+//  cursor: pointer;	}
+
+// }
+
+
+@media all and (min-width: $desktop-min-width){
+	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    // margin-left: 0;
+    // padding: 15px 15px 15px 0;
+    // width: 175px;
+    position: absolute;
+    top: 0;
+    left: 20px;
+	}
+
+	.navbar .navbar-toggle{
+		// display:none;
+	}
+
+
+	.nav-buttons-wrapper{
+		// position:static;
+		// opacity:1;
+
+	}
+	// .nav-buttons{
+	// 	// Align buttons
+	// 	display: flex;
+	// 	justify-content: center;
+	// 	flex-wrap:wrap;
+	// 	align-items:center;
+	// 	padding:0;
+
+
+	// 	// sizing, positioning
+	// 	height: 100%;
+	// 	width: 100%;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+
+	// 	li{
+	// 		margin:0 15px 0 0;
+	// 		height:100%;
+	// 		width: 17%;
+ //    		&:last-child{
+ //    			margin:0;
+ //    		}
+ //    	}
+
+	// }
+
+	// .nav-button{
+	// 	// @include sans-serif-text(14px, 1em);
+	// 	// color:white;
+	// 	padding:5px 10px;
+	// 	background-color:rgba(white, .3);
+	// 	text-decoration:none;
+	// 	cursor:pointer;
+	// 	transition:150ms all ease;
+	// 	display: flex;
+	// 	align-items:center;
+	// 	height:100%;
+	// 	border-radius:0;
+
+	// 	&:focus, &:hover{
+	// 		// color:black;
+	// 		background-color:rgba(white, .7);
+	// 		text-decoration:none;
+	// 		// height:125%;
+	// 		transition:150ms all ease;
+	// 	}
+	// 	&--highlight, &--highlight:hover {
+	// 		color:black;
+	// 		background-color:white;
+	// 		text-decoration:none;
+	// 		// height:125%;
+	// 		transition:150ms all ease;
+	// 	}
+	// }
+}
+
+@media all and (min-width: 1000px){
+
+	.nav-buttons li{
+    		// Just a little tweak once we have more display space.
+    		// ... b/c one line is best, not wrapper.
+			width: auto;
+	}
+}

@@ -1,0 +1,171 @@
+$column_width: 280px;
+$credit_padding: 15px;
+
+@keyframes border_blink {
+    0% { 
+    	border:0px solid rgba(white, 1);
+    }
+    100% { 
+    	border:15px solid rgba(white, 0);
+    }
+}
+
+@mixin border_blink($time){
+  // display: inline-block;
+  // position: relative;
+  animation: border_blink $time infinite linear;
+}
+
+.credits{
+	text-align:left;
+	background: rgba($trib-blue4, .5);
+	border-top: 4px solid $trib-blue2;
+	border-bottom: 4px solid $trib-blue2;
+	padding:25px;
+	margin-top:25px;
+
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+
+}
+
+.credits__header{
+	@include label5();
+	@include display-type('serif');
+	width:100%;
+	margin:0 15px 15px 0;
+	text-align:center;
+}
+
+.credits__column{
+	width:$column_width;
+
+	// &__people{
+	// 	width:$column_width - (2 * $credit_padding) - 2px;
+	// 	padding: $credit_padding;
+	// 	border: 1px solid $trib-blue2;
+	// }
+
+}
+
+
+.credits__people{
+
+	margin:30px 0 0 0; // This margin aligns it with the links padding spelled out below
+	padding:30px 0 0 0;
+	border-top:1px solid $trib-blue2;
+	width:100%;
+	text-align:center;
+
+
+	dt{
+		@include agate();
+		font-weight: bold;
+		margin: 0 0 5px 0;
+	}
+
+	dd{
+		@include serif();
+		margin: 0 0 20px 0;
+	}
+}
+// Story links
+
+.credits__story-links{
+	list-style-type:none;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+
+.story-link{
+	padding:10px 0;
+	
+	&__link{
+		text-decoration:none !important; // Using important here b/c I don't have time to mess around with bootstrap scaffolding at the moment.
+	}
+
+	&__prefix{
+		@include agate();
+		text-transform: uppercase;
+		font-weight:bold;
+		display:block;
+		color:black;
+	}
+
+	&__description{
+		@include serif();
+		margin-bottom:0;
+		color:black;
+	}
+}
+
+@media all and (min-width: #{($column_width + 20) * 2)}){
+	// When the window width is greater than the space needed for two columns and 20px gutters on container
+	.credits__people{
+		margin:20px 0 0 0; // This margin aligns it with the links padding spelled out below
+		padding:0;
+		border-top:none;
+	}
+
+
+	.credits__column{
+		&--links { margin-right: 25px; }
+		
+		&--people{
+			width:$column_width - (2 * $credit_padding) - 2px;
+			padding: $credit_padding;
+			border: 1px solid $trib-blue2;
+		}
+
+	}
+
+	
+
+
+	.story-link{
+		@include clearfix();
+		position:relative;
+		padding:20px;
+		cursor:pointer;
+		border-radius:5px;
+		transition:all 150ms ease;
+
+		&:hover{
+			background:rgba(white, .5);
+			transition:all 150ms ease;
+			
+			&__description, &__prefix{
+				color:black;
+				text-decoration:none !important; // Using important here b/c I don't have time to mess around with bootstrap scaffolding at the moment.
+			}
+		}
+
+		&--next{
+			background:white;
+		    border-left: 5px solid $trib-blue2;
+			&:before{
+				content:'UP NEXT:';
+				display: block;
+				font-family:'Arial', sans-serif;
+				font-size:14px;
+				text-align:left;
+				margin-bottom:5px;
+			}
+			.story-link__prefix{
+			    font-size: 18px;
+			}
+			.story-link__description{
+			    font-size: 18px;
+			}
+			&:hover{
+				background:white;
+			}
+		}
+	}
+}
+
+
+// @media all and (min-width: $tablet-min-width){}
+// @media all and (min-width: $desktop-min-width){}

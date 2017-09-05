@@ -1,0 +1,68 @@
+// A wrapper mixin to apply standard body type where needed, since we're abandoning the usual NGUX framework.
+@mixin serif(){
+	@include serif-text(15px, 1.6em);
+	margin: 0 0 18px 0;
+}
+
+@mixin text_stroke(
+	$text-color:black, 
+	$stroke-color:white, 
+	$stroke-width:1px, 
+	$stroke-opacity:1,
+	$stroke-blur:0){
+	  
+
+  color:$text-color;
+  text-shadow:
+	#{0-$stroke-width} #{0-$stroke-width} $stroke-blur rgba($stroke-color, $stroke-opacity),  
+	$stroke-width #{0-$stroke-width} $stroke-blur rgba($stroke-color, $stroke-opacity),
+	#{0-$stroke-width} $stroke-width $stroke-blur rgba($stroke-color, $stroke-opacity),
+	$stroke-width $stroke-width $stroke-blur rgba($stroke-color, $stroke-opacity);
+}
+
+@mixin display-type($type){
+	@if $type == 'serif'{
+		font-family: 'Playfair Display', 'Georgia', serif;
+	} @else {
+		font-family: 'Arial', 'Helvetica', sans-serif;
+	}
+}
+
+@keyframes bounce {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(0,-0.2em); }
+    70% { transform: translate(0,-0.3em); }
+    100% { transform: translate(0,0); }
+}
+
+@keyframes bounce_reverse {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(0,0.2em); }
+    70% { transform: translate(0,0.3em); }
+    100% { transform: translate(0,0); }
+}
+
+@mixin bounce($time, $direction:bounce){
+  display: inline-block;
+  // position: relative;
+  animation: $direction $time infinite linear;
+}
+
+@mixin river_narrow($max-width){
+	max-width: $max-width;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@keyframes enlarge{
+	0%{ transform:scale(.5); }
+	100%{ transform:scale(1); }
+}
+
+@mixin enlarge($time){
+  // display: inline-block;
+  // position: relative;
+  animation: enlarge $time 1 linear;
+}

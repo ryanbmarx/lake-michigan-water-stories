@@ -1,0 +1,47 @@
+.video{
+	margin:0 0 25px 0;
+	width: 100%;
+
+	.video-js{
+		width: 100%;
+		height: 0;
+		padding-bottom: 56.25%;
+	}
+
+	&__headline{
+		@include label7();
+		margin: 0 0 10px 0;
+	}
+
+	&__wrapper{
+		@include responsive_embed(16, 9, 0);
+		background: #eee;
+		object{
+			position: absolute;
+			top:0;
+			left:0;
+			height:100%;
+			width:100%;
+		}
+	}
+	.vjs-overlay-bottom-right{
+		// This should hide the LAT logo on the player
+		display:none;
+	}
+}
+
+@media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
+
+
+	.video.video--right{
+		width: $notched_width + $notched_video_add_on;
+		float: right;
+		margin: 0 #{ 0 - $notched_video_add_on } 25px 25px;
+
+		.video__wrapper{
+			height: ($notched_width + $notched_video_add_on) * .5625;
+			width: $notched_width + $notched_video_add_on;
+			padding:0;	
+		}
+	}
+}

@@ -1,0 +1,87 @@
+// @import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
+/*
+font-family: 'Asar', serif;
+font-family: 'Lora', serif;
+font-family: 'IM Fell French Canon', serif;
+font-family: 'Suranna', serif;
+*/
+
+
+p {
+	@include serif();
+}
+
+.met-promo p{
+	// Tweak to correct the metering modal
+	@include sans-serif();
+}
+
+
+
+
+
+h1{
+	// Should only be used once per page and only should be used as the main, hammerheadline
+	@include serif-text(50px, .9em, 700);
+	@include display_type('serif');
+	text-transform:uppercase;
+	text-align:center;
+	margin: 0 0 10px 0;
+}
+
+h2{
+	// Should only be used once per page and only should be used as the dek/subheadline
+	@include serif-text(23px, 1.3em, normal);
+	@include display_type('serif');
+	text-align:center;
+	margin: 20px 0;
+
+}
+
+h3{
+	// These are story breakers and should remain the top-level header inside a story.
+	@include serif-text(20px, 1.3em, bold);
+	@include display_type('serif');
+
+	margin: 0 0 25px 0;
+}
+
+@media all and (min-width: $tablet-min-width){
+	p{
+		@include serif-text(18px, 1.5em);
+		margin: 0 0 25px 0;
+	}
+	
+	.text--exploded{
+	    font-size: 2.2rem;
+	    line-height: 4rem;	
+	}	
+
+	h1{
+		font-size:60px;
+	}
+
+	h3{
+		font-size:25px;
+	}
+}
+
+@media all and (min-width: $desktop-min-width){
+	.text--exploded{
+		font-size:2.2rem;
+	    line-height: 4rem;
+	}
+
+	h1{
+		font-size:85px;
+	}
+
+	h2{
+		font-size: 30px;
+	}
+
+	h3{
+		font-size:30px;
+	}
+}

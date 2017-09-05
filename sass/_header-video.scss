@@ -1,0 +1,16 @@
+.story-header__video{
+	video.header-video--large{
+		display:none;
+	}
+}
+
+@media all and (min-width: 1100px){
+	.story-header__video{
+		video.header-video--large{
+			display:block;
+		}
+		video.header-video--small{
+			display:none;
+		}
+	}
+}
