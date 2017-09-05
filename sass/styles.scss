@@ -1,0 +1,261 @@
+// Bootstrap-sass documentation https://github.com/twbs/bootstrap-sass#d-npm--nodejs
+// ::Sass::Script::Value::Number.precision = [8, ::Sass::Script::Value::Number.precision].max
+
+
+
+// Enables for Tribune colors, but is required for everything.
+@import 'base-variables';
+@import 'bootstrap_custom_variables';
+// Breakpoints
+$tablet-min-width:450px;
+$desktop-min-width:850px;
+
+$ad_leaderboard_height: 95px + 15px + 15px; // Just measured div height, margins
+$nav_height: 51px;
+$narrow-river-max-width-desktop: 650px;
+$narrow-river-max-width: 450px;
+$map-width: 600px;
+$notched_width: 350px;
+$notched_video_add_on: 100px;
+$header-bg-color:$trib-gray4;
+
+
+// ---- ADD MORE VARIABLES HERE ---------------------------------------------
+
+// Required for everything, too, but can be broken down into smaller explicit imports if desired. 
+@import 'base-mixins';
+// ---- MAKE OR IMPORT MORE MIXINS HERE ---------------------------------------------
+
+// @import 'property-tax-mixins';
+
+// ---- BRING IN THE BOOTSTRAP ---------------------------------------------
+
+@import 'bootstrap_custom';
+
+
+// ---- TRIB CLASSES, UNCOMMENT THE ONES YOU WANT ---------------------------------------------
+// @import 'ngux-visibility-toggles';
+// @import 'trib-bulletbox';
+// @import 'trib-buttons';
+// @import 'trib-colors';
+// @import 'trib-images-charts';
+// @import 'trib-legends';
+// @import 'trib-skeleton';
+// @import 'trib-tables';
+// @import 'trib-timeline-basic';
+// @import 'trib-typography';
+// @import 'trib-utilities';
+
+
+// ---- IMPORT PROJECT STYLES FROM PARTIAL FILES HERE ---------------------------------------------
+
+// SWIPER
+// @import '../node_modules/swiper/dist/css/swiper.min';
+
+
+// @import 'adverts';
+// @import 'typography-prop-tax';
+// @import 'nav';
+// @import 'pullquote';
+// @import 'story-header';
+// @import 'social-menu';
+// @import 'credits';
+// @import 'graphic-embed';
+// @import 'header-video';
+// @import 'videos';
+// @import 'day1_header';
+
+// ---- WRITE MORE PROJECT STYLES HERE ---------------------------------------------
+
+.hidden{
+	// pickup from bootstrap sass module no longer being used
+	display:none !important;
+}
+
+.river--narrow{
+	@include river_narrow($narrow-river-max-width);
+}
+
+
+// --------------------------------------------
+// -------------- REFER ASIDES UNIVERSAL STYLES ----
+// --------------------------------------------
+
+
+.refer{
+	padding: 15px;
+	background-color: rgba($trib-blue2, .2);
+    background-image: url(../img/grid_background.svg);
+    background-size: 7px;
+    margin: 25px 0;
+	text-align:center;
+	
+	&__headline{
+		margin:0 0 7px 0;
+	}
+
+	&__button{
+		@include sans-serif();
+		text-align: center;
+		max-width:280px;
+		display:block;
+		padding:15px 0;
+		background:lighten($trib-orange, 5%);
+		transition: background-color 150ms ease;
+		color:white;
+		cursor:pointer;
+		margin: 0 auto;
+
+		&:hover, &:focus{
+			color:white;
+			text-decoration: none;
+			background:$trib-orange;			
+			transition: background-color 150ms ease;
+		}
+	}
+
+
+	&.refer--right{
+		text-align:left;
+	    max-width: none;
+		float:right;
+		margin: 25px 0;
+
+		.refer__blurb{
+			@include sans-serif-text(14px, 1.3em);
+		}
+	}
+}
+
+.methodologies{
+	margin-top:25px;
+	// padding-top:25px;
+	// border-top:1px solid black;
+	&__header{
+		@include label5();
+		@include display_type('serif');
+	}
+}
+
+.methodology{
+	margin-bottom:25px;
+	padding-bottom:25px;
+	border-bottom:1px solid $trib-gray4;
+
+	&:last-child{
+		padding-bottom:0;
+		border-bottom:none;
+	}
+	p{
+		@include agate();
+	}
+
+	&__link{
+		@include agate();
+	}
+}
+
+// --------------------------------------------
+// -------------- FOOTER ----------------------
+// --------------------------------------------
+.page-footer{
+	@include agate();
+	background:$trib-blue2;
+    padding: 10px 0;
+	.nav {
+		list-style-type: none;
+		max-width:90%;
+		margin:0 auto;
+		padding:0;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		& > li {
+			 margin:0 20px 5px 0;
+			& > a{
+				color:rgba(white, .9);
+				&:hover, &:focus {
+				    text-decoration: underline;
+				    background-color: transparent;
+				}
+			}
+		}
+	}
+}
+
+// Comments tweaks
+
+.comments-wrapper{
+	border-bottom: 4px solid $trib-blue2;
+	padding:30px 0 15px 0;
+}
+
+
+#comments-button{
+	@include sans-serif-text(14px, 1em, normal);
+	display:block;
+	padding: 15px 0;
+	margin: 0 auto 15px auto;
+	width: 100%;
+	max-width: 150px;
+	background:transparent;
+	border: 1px solid $trib-blue2;
+	border-radius: 10px;
+	transition: all 150ms ease;
+	&:hover, &:focus{
+		background: $trib-blue2;
+		color:white;
+		transition: all 150ms ease;
+	}
+}
+
+.trb_cm_so[data-role="cm_container"]{
+	max-height:0;
+	transition: max-height 400ms ease;
+}
+
+.met-promo{
+	.met-promo-content{
+		p{
+			@include sans-serif();
+			color:white;
+			width:100%;
+		}
+	}
+}
+
+@media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
+	// .subscribe.subscribe--right{
+	// 	text-align:left;
+	// 	max-width: 280px;
+	// 	float:right;
+	// 	margin: 25px 0 25px 25px;
+	// }
+
+	.refer.refer--right{
+	    max-width: 210px;
+		margin: 3px 0 25px 25px;
+	    
+	    .refer__blurb{
+			@include serif-text(16px, 1.5em);
+	    }
+	}
+
+
+	.river--narrow{
+		@include river_narrow($narrow-river-max-width-desktop);
+	}
+
+	.byline{
+		@include river_narrow($narrow-river-max-width-desktop);
+		margin-bottom:25px;
+	}
+	
+
+}
+
+@media all and (min-width: $desktop-min-width){
+	.refer.refer--right{
+    	max-width: 250px;
+	}
+}

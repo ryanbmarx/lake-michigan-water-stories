@@ -1,0 +1,5 @@
+{# <span class='story-link__blinking-border'></span> #}
+<a class='story-link__link' href="{{ story.url }}">
+	{% if story.prefix %}<span class='story-link__prefix'>{{ story.prefix }}</span>{% endif %}
+	<p class='story-link__description'>{{ story.description }}</p>
+</a>

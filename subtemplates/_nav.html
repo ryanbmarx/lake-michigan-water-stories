@@ -1,0 +1,36 @@
+{# TODO: Use an SVG in the navbar. #}
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <button id='mobile-nav-toggle' type="button" class="navbar-toggle" >
+            
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            <label for="toggle"></label>
+          </button>
+          <input id='toggle' type="checkbox">
+          <div id='nav-buttons-wrapper' class='nav-buttons-wrapper'>
+            <ul class='nav-buttons'>
+              {% for element in navbar_elements|sort(attribute='order') if element.show_in_navbar == 1 %}
+                {% if element.part == part %}
+                  {% set highlight_class = 'nav-button--highlight'%}
+                {% else %}
+                  {% set highlight_class = '' %}
+                {% endif %}
+
+                <li>
+                  <a href='{{ element.url }}' class='nav-button {{ highlight_class }}'>{{ element.prefix }}</a>
+                </li>
+              {% endfor %}
+              </ul>   
+                             
+          </div>
+           <a class="navbar-brand" href="http://www.chicagotribune.com">
+              <img class="logo" src="img/chicago-tribune-logo.svg" title="Chicago Tribune" alt="Chicago Tribune" itemprop="publisher" content="Chicago Tribune"/>
+          </a>
+        </div>
+    </div>
+</nav>

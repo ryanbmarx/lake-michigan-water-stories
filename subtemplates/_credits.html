@@ -1,0 +1,52 @@
+{% macro add_people(role) %}
+	{% set people = "XX" %}
+	{%- for person in credits if person[role] == 1 -%}
+		{% if person.link %}
+			<a href="{{ person.link }}">{{ person.name }}</a>{% if not loop.last %}, {% endif %}
+		{% else %}
+			{{ person.name }}{% if not loop.last %}, {% endif %}
+		{% endif %}
+	{%- endfor -%}
+{% endmacro %}
+
+<section id='credits' class='credits'>
+	<h2 class='credits__header'>{{ title }}</h2>	
+	<div class='credits__column credits__column--links'>
+		<ul class='credits__story-links'>
+			{% set this_is_up_next = False %}
+			{%- for story in navbar_elements|sort(attribute='order') -%}
+				{% if this_is_up_next %}
+					{% set class = 'story-link--next' %}
+					{% set this_is_up_next = False %}
+				{% else %}
+					{% set class = '' %}
+				{% endif %}
+
+				<li class='story-link {{ class }}'>
+					{% include '_subtemplates/_credits-list-item.html' %}
+				</li>
+				{% if story.part == part %}
+					{% set this_is_up_next = True %}
+				{% endif %}
+			{%- endfor -%}
+		</ul>
+	</div>
+	<div class='credits__column credits__column--people'>
+		<dl class='credits__people'>
+	{% set roles = [
+		{"label":'Reporting', "id":"reporting"}, 
+		{"label":'Editing', "id":"editing"}, 
+		{"label":'Photo/Video Editing', "id":"photo_ed"},
+		{"label":'Photos', "id":"photos"}, 
+		{"label":'Graphics', "id":"graphics"}, 
+		{"label":'Videos', "id":"videos"}, 
+		{"label":'Copy Editing', "id":"copy"}, 
+		{"label":'Design', "id":"design"}
+	] %}
+		{%- for role in roles -%}
+			<dt>{{ role.label|upper }}</dt>	
+			<dd>{{ add_people(role.id|upper) }}</dd>
+		{%- endfor -%}
+		</dl>
+	</div>
+</section>

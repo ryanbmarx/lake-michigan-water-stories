@@ -1,0 +1,13 @@
+{% set page_url =  "http://" + ROOT_URL + "/" + PATH %}
+<ul class="social-menu">
+    <li>
+        <a target="_blank" href="https://twitter.com/share?url={{ page_url }}&text={% block tweet %}XXX{% endblock tweet%}">
+            <i class="fa fa-twitter fa-2x"></i> <span class="hidden">Twitter</span>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ page_url }}&t={% block facebook %}fff{% endblock facebook %}">
+            <i class="fa fa-facebook fa-2x"></i> <span class="hidden">Facebook</span>
+        </a>
+    </li>
+</ul>
