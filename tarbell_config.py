@@ -161,29 +161,32 @@ def get_up_next(parts, current_part):
 # Google document key for the stories
 DOC_KEY = '1h-1NS3bggsPAxaI2oulQZ7B-WnucTRUbEYsHBRPEWko'
 
-def get_drive_api_stuff():
-    service = get_drive_api()
-    try:
-        docfile = service.files().get(fileId=DOC_KEY).execute()
-        downloadurl = docfile['exportLinks']['text/html'] # export as 'text/html' instead of 'text/plain' if we want to parse links and styles
-        resp, content = service._http.request(downloadurl)
+# @register_hook('preview')
+# @register_hook('generate')
+# def get_drive_api_stuff(site):
+#     service = get_drive_api()
+#     try:
+#         docfile = service.files().get(fileId=DOC_KEY).execute()
+#         downloadurl = docfile['exportLinks']['text/html'] # export as 'text/html' instead of 'text/plain' if we want to parse links and styles
+#         resp, content = service._http.request(downloadurl)
 
-        # write to file
-        with open('out_drive.html', 'w+') as f:
-            text = content.decode("utf-8-sig", errors='ignore') # get rid of BOM
-            f.write(text.encode('utf8', 'replace')) # lol
-        return text
-    except errors.HttpError, error:
-        print 'An error occurred: %s' % error
+#         # write to file
+#         with open('out_drive.html', 'w+') as f:
+#             text = content.decode("utf-8-sig", errors='ignore') # get rid of BOM
+#             f.write(text.encode('utf8', 'replace')) # lol
+#         return text
+#     except errors.HttpError, error:
+#         print 'An error occurred: %s' % error
 
-get_drive_api_stuff()
+# get_drive_api_stuff(False)
 
 def get_extra_context():
-  call(["node", "scripts/js_parser.js", "out_drive.html"]) # parse the html before loading it into archieML
-  with open('./out_parsed.txt') as f:
-    data = archieml.load(f)
-  data = dict(data)
-  return data
+    print ">>>>> PARSING NEW STORY"
+    call(["node", "scripts/js_parser.js", "out_drive.html"]) # parse the html before loading it into archieML
+    with open('./out_parsed.txt') as f:
+        data = archieml.load(f)
+    data = dict(data)
+    return data
 
 @blueprint.app_template_filter()
 def add_ptags(text):
@@ -327,8 +330,31 @@ DEFAULT_CONTEXT = {
     'title': 'Lake Michigan Water Stories'
 }
 
+@register_hook('preview')
+@register_hook('generate')
+def update_context(site):
+    DEFAULT_CONTEXT.update(**get_extra_context())
 
-DEFAULT_CONTEXT.update(**get_extra_context())
+@register_hook('preview')
+@register_hook('generate')
+def get_drive_api_stuff(site):
+    print ">>>>> GETTING NEW STORY TEXT"
+    service = get_drive_api()
+    try:
+        docfile = service.files().get(fileId=DOC_KEY).execute()
+        downloadurl = docfile['exportLinks']['text/html'] # export as 'text/html' instead of 'text/plain' if we want to parse links and styles
+        resp, content = service._http.request(downloadurl)
+
+        # write to file
+        with open('out_drive.html', 'w+') as f:
+            text = content.decode("utf-8-sig", errors='ignore') # get rid of BOM
+            f.write(text.encode('utf8', 'replace')) # lol
+        return text
+    except errors.HttpError, error:
+        print 'An error occurred: %s' % error
+
+    DEFAULT_CONTEXT.update(**get_extra_context())
+
 
 # Make the archiemal thing auto
 
