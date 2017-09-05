@@ -8,7 +8,7 @@ Tarbell project configuration
 SPREADSHEET_KEY = "1F8yvZm2awwsRycdV_nzywlaoT_xUjvYcpOoGfye8CZw"
 
 # Exclude these files from publication
-EXCLUDES = ['*.md', 'requirements.txt', 'node_modules', 'sass', 'js/src', 'package.json', 'Gruntfile.js']
+EXCLUDES = ['*.md', 'requirements.txt', 'node_modules', 'sass', 'js/src', 'package.json', 'Gruntfile.js', 'subtemplates']
 
 # Spreadsheet cache lifetime in seconds. (Default: 4)
 # SPREADSHEET_CACHE_TTL = 4
@@ -33,7 +33,7 @@ S3_BUCKETS = {
     #     "mytarget": "mys3url.bucket.url/some/path"
     # then use tarbell publish mytarget to publish to it
     
-    "production": "graphics.chicagotribune.com/lake-michigan-water-stories",
+    "production": "graphics.chicagotribune.com/news/lake-michigan-water-stories",
     "staging": "apps.beta.tribapps.com/lake-michigan-water-stories",
 }
 
