@@ -25,6 +25,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-postcss": "^0.8.0",
     "grunt-sass": "^1.2.0",
+    "html-entities": "^1.2.1",
+    "htmlparser2": "^3.9.2",
     "minifyify": "^7.3.3",
     "trib-styles": "git+https://tribune.unfuddle.com/git/tribune_trib-styles/"
   },
