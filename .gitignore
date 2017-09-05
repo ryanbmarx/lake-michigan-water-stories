@@ -9,3 +9,5 @@ app.min.js
 app.min.js.map
 vendor.min.js
 vendor.min.js.map
+out_drive.html
+out_parsed.txt
