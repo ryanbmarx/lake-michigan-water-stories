@@ -77,7 +77,7 @@ module.exports = function(grunt) {
   config.watch = {
     sass: {
       files: ['sass/**/*.scss'],
-      tasks: ['sass']
+      tasks: ['sass', 'postcss']
     },
     js: {
       files: ['js/src/**/*.js'],
@@ -85,16 +85,38 @@ module.exports = function(grunt) {
     }
   };
 
+  config.postcss = {
+    options: {
+      // map: true, // inline sourcemaps
+
+      // or
+      // map: {
+      //     inline: false, // save all sourcemaps as separate files...
+      //     annotation: 'dist/css/maps/' // ...to the specified directory
+      // },
+
+      processors: [
+        // require('pixrem')(), // add fallbacks for rem units
+        require('autoprefixer')() // add vendor prefixes
+      ]
+    },
+    dist: {
+      src: 'css/*.css'
+    }
+  }
+
   grunt.initConfig(config);
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-postcss');
 
   var defaultTasks = [];
 
   defaultTasks.push('sass');
   defaultTasks.push('browserify');
+  defaultTasks.push('postcss');
 
   grunt.registerTask('default', defaultTasks);
 };
