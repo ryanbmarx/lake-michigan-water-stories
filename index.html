@@ -1,0 +1,24 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="advert top-ad" data-ad-type="leaderboard"></div>
+            {% include "_social_row.html" %}
+            <h1 itemprop="headline">Welcome to Tarbell!</h1>
+            <p>Brought to you by <span itemprop="author">the Chicago Tribune News Apps team</span></p>
+            <p>Updated last <span itemprop="datePublished">July 15, 2014</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8" itemprop="articleBody">
+            <p>We hope you will find this template helpful in getting your project started. We've built in some common features that you may need. Here's a quick overview:</p>
+            <p><strong><a href="http://docs.tribapps.com/schema.html">Schema.org tags</a>:</strong> Schema tags help Google know more about your project when it turns up in a search. By default, this blueprint inherits from <a href="http://schema.org/NewsArticle">the NewsArticle</a> schema tag. We define a headline, author, publish date, article body, and comments. You can change this by overriding the <code>schema</code> block on the <code>body</code> tag. New to schema tags? Not sure if <code>NewsArticle</code> is right for your project? <a href="http://docs.tribapps.com/schema.html">Read our handy documentation to get started.</a></p>
+            <p><strong><a href="http://docs.tribapps.com/ads.html">Ads</a>:</strong> Our ad library is present in Tarbell projects by default. You can <a href="http://docs.tribapps.com/ads.html">read more about how to use it here</a>, including how to use the standard ad map, or just crib off of our examples on this page.</p>
+            <p><strong><a href="http://newsapps.github.io/bootstrap/">Bootstrap 3</a>:</strong> We include our custom version of Bootstrap 3 in this template. Bootstrap 3 introduced different names for grid components. Of note, Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to padding and more, neither container is nestable. Use <code>.container</code> for a responsive fixed width container. Use <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport. <a href="http://newsapps.github.io/bootstrap/css/#grid">Read more here</a> before you start building!</p>
+        </div>
+        <div class="advert col-xs-12 col-sm-4" data-ad-type="shrinky-cube"></div>
+    </div>
+</div>
+{% endblock content %}
