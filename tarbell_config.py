@@ -131,17 +131,6 @@ def dumb_to_smart_quotes(string):
 ############################
 
 
-# @blueprint.app_template_filter('check_for_methods')
-# def check_for_methods(methods, part):
-#     """
-#         This filter returns true if the specififed story (part) has ANY methodologies in the spreadsheet. 
-#         If there are none, it returns false.
-#     """
-#     for method in methods:
-#         if method['part'] == part:
-#             return True
-#     return False
-
 @blueprint.app_template_filter('get_up_next')
 def get_up_next(parts, current_part):
     """
@@ -170,7 +159,7 @@ def get_up_next(parts, current_part):
 ############################
 
 # Google document key for the stories
-DOC_KEY = '1HlDz84N-29l7lUqatSAQIcWOjOwCOs6jyKYrEQnze-4'
+DOC_KEY = '1h-1NS3bggsPAxaI2oulQZ7B-WnucTRUbEYsHBRPEWko'
 
 def get_drive_api_stuff():
     service = get_drive_api()
@@ -190,8 +179,8 @@ def get_drive_api_stuff():
 get_drive_api_stuff()
 
 def get_extra_context():
-  call(["node", "node_scripts/js_parser.js", "out_drive.html"]) # parse the html before loading it into archieML
-  with open('out_parsed.txt') as f:
+  call(["node", "scripts/js_parser.js", "out_drive.html"]) # parse the html before loading it into archieML
+  with open('./out_parsed.txt') as f:
     data = archieml.load(f)
   data = dict(data)
   return data
@@ -297,7 +286,7 @@ def p2p_publish_archiemlstory(site, s3):
 SPREADSHEET_KEY = "1F8yvZm2awwsRycdV_nzywlaoT_xUjvYcpOoGfye8CZw"
 
 # Exclude these files from publication
-EXCLUDES = ['*.md', 'requirements.txt', 'node_modules', 'sass', 'js/src', 'package.json', 'Gruntfile.js', 'subtemplates']
+EXCLUDES = ['*.md', 'scripts', 'requirements.txt', 'node_modules', 'sass', 'js/src', 'package.json', 'Gruntfile.js', 'subtemplates']
 
 # Spreadsheet cache lifetime in seconds. (Default: 4)
 # SPREADSHEET_CACHE_TTL = 4
@@ -337,3 +326,16 @@ DEFAULT_CONTEXT = {
     'name': 'lake-michigan-water-stories',
     'title': 'Lake Michigan Water Stories'
 }
+
+
+DEFAULT_CONTEXT.update(**get_extra_context())
+
+# Make the archiemal thing auto
+
+# @register_hook('preview')
+# @register_hook('generate')
+# def copy_assets(site, output_root=None, extra_context=None):
+#     """Copy assets in non-standard directories to a more logical place"""
+#     # Check if we've already done this to avoid slow filesystem checks
+#     # on every request
+#     t
