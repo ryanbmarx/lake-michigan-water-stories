@@ -13,7 +13,8 @@ module.exports = function(grunt) {
   config.browserify = {
     options: {
       browserifyOptions: {
-        debug: true
+        debug: true,
+        paths:['js/src/', 'node_modules/bootstrap-sass/assets/javascripts']
       }
     },
     app: {
@@ -65,7 +66,7 @@ module.exports = function(grunt) {
     options: {
       outputStyle: 'compressed',
       sourceMap: true,
-      includePaths: [ 'sass/', 'node_modules/trib-styles/sass/' ]
+      includePaths: [ 'sass/', 'node_modules/trib-styles/sass/', 'node_modules/bootstrap-sass/assets/stylesheets/' ]
     },
     app: {
       files: {
@@ -97,7 +98,18 @@ module.exports = function(grunt) {
 
       processors: [
         // require('pixrem')(), // add fallbacks for rem units
-        require('autoprefixer')() // add vendor prefixes
+        require('autoprefixer')({
+          browsers: [
+            "Android 2.3",
+            "Android >= 4",
+            "Chrome >= 20",
+            "Firefox >= 24",
+            "Explorer >= 8",
+            "iOS >= 6",
+            "Opera >= 12",
+            "Safari >= 6"
+          ]
+        }) // add vendor prefixes
       ]
     },
     dist: {
