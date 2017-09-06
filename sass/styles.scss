@@ -17,6 +17,9 @@ $nav_height: 40px;
 $nav_padding_v: 10px;
 $nav_padding_h: 25px;
 
+// STORY HEADER CONFIG
+$story_header_display_max_height: 650px;
+
 // CREDIT CONFIG
 $credits_item_border-radius: 5px;
 
@@ -75,7 +78,7 @@ $header-bg-color:$trib-gray4;
 
 // This makes an item's rendered/calulated width equal to the width attribute, not 
 // the width + padding + border. This class should be extended.
-.border-box{
+%border-box{
 	box-sizing: border-box;
 	&:before, &:after{
 		box-sizing: border-box;

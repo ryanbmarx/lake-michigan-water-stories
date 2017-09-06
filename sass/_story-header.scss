@@ -1,88 +1,103 @@
 .story-header{
 	
 	position:relative;
+	
+	&__inner{
+		@extend %border-box;
+		background: url(../img/water-texture-2.jpg) top center no-repeat;
+		background-size: cover;
+		padding: 50px;
+		margin: 0 0 25px 0;
+		height: calc(100vh - #{$nav_height + ($nav_padding_v * 2)});
+		max-height: $story_header_display_max_height;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		align-content: center;
+		flex-wrap:wrap;
+	}
 
 	&__project-title{
-	z-index: 1000;
-	width: 100%;
-	max-width:370px;
-	text-align: center;
-	margin: 20px auto;
-	padding: 5px;
-	background: rgba(white, .85);
+		z-index: 1000;
+		width: 100%;
+		max-width:370px;
+		text-align: center;
+		margin: 20px auto;
+		padding: 5px;
+		background: rgba(white, .85);
 	
-	p{
-		@include sans-serif-text(14pt, 1em);
-		@include display_type('serif');
-		// @include text_stroke(white, black, 2px, .3, 7px);
+		p{
+			@include sans-serif-text(14pt, 1em);
+			@include display_type('serif');
+			// @include text_stroke(white, black, 2px, .3, 7px);
 
-		margin: 0 auto 10px auto;
-		text-transform: uppercase;
-		
-		display:inline;
-		color:black;
+			margin: 0 auto 10px auto;
+			text-transform: uppercase;
+			
+			display:inline;
+			color:black;
 
 		}	
 	}
 
-	&__title{
-		font-family:"Arial", sans-serif;
-		text-transform: uppercase;
-		font-size:16px;
-		color:$trib-blue4;
-	}
+	// &__title{
+	// 	font-family:"Arial", sans-serif;
+	// 	text-transform: uppercase;
+	// 	font-size:16px;
+	// 	color:$trib-blue4;
+	// }
 
-	&__display{
-		background-size:cover;	
-		margin-bottom:25px;
-		box-shadow: 0 -2px 5px rgba(black, .25);
-		display:flex;
-		flex-wrap:wrap;
-		align-content:center;
-		align-items:center;
-		position:relative;
-		overflow: visible;
-		margin-bottom: 45px;
-	    padding: 65px 25px;
-	}
+	// &__display{
+	// 	background-size:cover;	
+	// 	margin-bottom:25px;
+	// 	box-shadow: 0 -2px 5px rgba(black, .25);
+	// 	display:flex;
+	// 	flex-wrap:wrap;
+	// 	align-content:center;
+	// 	align-items:center;
+	// 	position:relative;
+	// 	overflow: visible;
+	// 	margin-bottom: 45px;
+	//     padding: 65px 25px;
+	// }
 
-	&__caption{
-		@include agate();
-		position: absolute;
-		right:0;
-		z-index: 1000;
-		margin:0;
-		text-align: right; 
-		color: black;
-		top: 100%;
-		bottom:auto;
-		max-width: none;
-		padding: 10px;
-	}
+	// &__caption{
+	// 	@include agate();
+	// 	position: absolute;
+	// 	right:0;
+	// 	z-index: 1000;
+	// 	margin:0;
+	// 	text-align: right; 
+	// 	color: black;
+	// 	top: 100%;
+	// 	bottom:auto;
+	// 	max-width: none;
+	// 	padding: 10px;
+	// }
 	
-	&__video{
-		display:none;
-	}
+	// &__video{
+	// 	display:none;
+	// }
 
-	&__video-controls{
-		display:none;
-		z-index: 1000;
-	}
+	// &__video-controls{
+	// 	display:none;
+	// 	z-index: 1000;
+	// }
 
-	&__video-texture{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: black url(../img/video-texture.svg);
-		background-size: 3px;
-		opacity: .25;
-	}
+	// &__video-texture{
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	background: black url(../img/video-texture.svg);
+	// 	background-size: 3px;
+	// 	opacity: .25;
+	// }
 
 	&__headline{
 		@include serif-text(60px, 0.9em);
-		@include display_type('serif');
+		@include display_type('sans-serif');
 		@include text_stroke(white, black, 2px, .3, 7px);
 		width:100%;
 		text-transform:uppercase;
@@ -116,6 +131,7 @@
 
 		a{
 			color:$trib-blue2;
+			text-decoration: none;
 		}
 	}
 
@@ -134,40 +150,40 @@
 }
 
 
-// These tweaks remove the video header from the sidebars and modify the design
-.story-header {
-	&--methods, &--assessor_response, &--appeals_methods{
-		padding: 40px 25px 0 25px;
-		background-color: rgba($trib-blue2, .15);
-		background-image: url(../img/grid_background.svg);
-		background-size: 8px;
-		margin-bottom: 25px;
+// // These tweaks remove the video header from the sidebars and modify the design
+// .story-header {
+// 	&--methods, &--assessor_response, &--appeals_methods{
+// 		padding: 40px 25px 0 25px;
+// 		background-color: rgba($trib-blue2, .15);
+// 		background-image: url(../img/grid_background.svg);
+// 		background-size: 8px;
+// 		margin-bottom: 25px;
 
-		.story-header__subheadline{
-			font-size: 36px;
-			line-height:1.3em;
-			text-transform: none;
-			@include text_stroke(black, black, 2px, .07, 5px);
+// 		.story-header__subheadline{
+// 			font-size: 36px;
+// 			line-height:1.3em;
+// 			text-transform: none;
+// 			@include text_stroke(black, black, 2px, .07, 5px);
 
-		}
-		.story-header__headline{ display:none; }
+// 		}
+// 		.story-header__headline{ display:none; }
 
-		.byline{
-			padding-top: 0;
-			border-top: none;
-			text-align: center;
-			margin-top: 10px;
-			&-name{
-				color:black;
-			}
-		}
+// 		.byline{
+// 			padding-top: 0;
+// 			border-top: none;
+// 			text-align: center;
+// 			margin-top: 10px;
+// 			&-name{
+// 				color:black;
+// 			}
+// 		}
 
 
-		.byline-publish-date{
-			color:black;
-		}
-	}
-}
+// 		.byline-publish-date{
+// 			color:black;
+// 		}
+// 	}
+// }
 
 @media all and (min-width: $tablet-min-width){
 
