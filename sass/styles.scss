@@ -11,7 +11,12 @@ $tablet-min-width:450px;
 $desktop-min-width:850px;
 
 $ad_leaderboard_height: 95px + 15px + 15px; // Just measured div height, margins
-$nav_height: 51px;
+
+// NAVBAR CONFIG
+$nav_height: 40px;
+$nav_padding_v: 10px;
+$nav_padding_h: 25px;
+
 $narrow-river-max-width-desktop: 650px;
 $narrow-river-max-width: 450px;
 $map-width: 600px;
@@ -52,7 +57,7 @@ $header-bg-color:$trib-gray4;
 // SWIPER
 // @import '../node_modules/swiper/dist/css/swiper.min';
 
-
+@import 'utilities';
 @import 'adverts';
 @import 'typography';
 @import 'nav';
@@ -125,33 +130,33 @@ $header-bg-color:$trib-gray4;
 	}
 }
 
-.methodologies{
-	margin-top:25px;
-	// padding-top:25px;
-	// border-top:1px solid black;
-	&__header{
-		@include label5();
-		@include display_type('serif');
-	}
-}
+// .methodologies{
+// 	margin-top:25px;
+// 	// padding-top:25px;
+// 	// border-top:1px solid black;
+// 	&__header{
+// 		@include label5();
+// 		@include display_type('serif');
+// 	}
+// }
 
-.methodology{
-	margin-bottom:25px;
-	padding-bottom:25px;
-	border-bottom:1px solid $trib-gray4;
+// .methodology{
+// 	margin-bottom:25px;
+// 	padding-bottom:25px;
+// 	border-bottom:1px solid $trib-gray4;
 
-	&:last-child{
-		padding-bottom:0;
-		border-bottom:none;
-	}
-	p{
-		@include agate();
-	}
+// 	&:last-child{
+// 		padding-bottom:0;
+// 		border-bottom:none;
+// 	}
+// 	p{
+// 		@include agate();
+// 	}
 
-	&__link{
-		@include agate();
-	}
-}
+// 	&__link{
+// 		@include agate();
+// 	}
+// }
 
 // --------------------------------------------
 // -------------- FOOTER ----------------------

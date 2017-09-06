@@ -1,95 +1,145 @@
 $space_between_mobile_buttons: 15px;
+$logo_width: 200px;
 
 // Give the navbar space to exist without overlapping anything at the top of the page.
 body{
 	padding-top:$nav_height;
 }
 
-// .dropdown-wrapper{ display:none } // hide until tablet
+
+
 
 .navbar{
 	background: rgba($trib-blue2, .92);
 	box-shadow: 0 2px 6px rgba(black, .35);
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
 
-	.navbar-toggle{
+	&__inner{
+		padding: $nav_padding_v $nav_padding_h;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		max-width: 1500px;
+		margin: 0 auto;
+		height: $nav_height;
+
+	}
+	// .navbar__toggle{
+	// 	display:block;
+	// }
+
+	&__logo{
 		display:block;
+		max-width: $logo_width;
+	    transform: translate(0,2px); // This cheats the logo down a bit so alignment with other items is tidy.
+
+		img{
+			width: 100%;
+		}
+	}
+
+	&__toggle{
+	    border: 1px solid transparent;
+	    margin-right: 15px;
+	    padding: 9px 10px;
+	    background-color: transparent;
+	    background-image: none;
+	    border-radius: 4px;
+		cursor:pointer;
+		position:relative;
+
+		&:hover, &:focus{ 
+			background: rgba(black, .4); 
+		}
+
+		.icon-bar{
+			// The little stripes in the hamburger button
+			display: block;
+			width: 22px;
+			height: 2px;
+			border-radius: 1px;
+			background: white;
+		
+			&:nth-child(3){
+				// The middle icon bar should push the other two away to make a proper burger menu.
+				margin: 5px 0;
+			}
+		}
+
+		label{
+			// This is key to the "checkbox label hack" which uses css and the checked/unchecked state of
+			// a checkbox to hide/show the navigation. This is nice because it does not rely on javascript.
+			// The label is inside the button, which will check the checkbox.
+			position:absolute;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			cursor:pointer;
+		}
 	}
 }
 
-// Adjustments to the logo
-.navbar > .container, 
-.navbar > .container-fluid {
-	.navbar-brand{
-		display:none;
-		margin-left:0;
-		padding: 15px 15px 15px 0;
-		width: 175px;
-	}
+
+
+#toggle{
+	// Hide our actual toggling checkbox off the grid.
+	position:absolute;
+	right: 100%;
 }
 
-
-nav.navbar {min-height: $nav_height;}
-
-.navbar .navbar-toggle:hover, 
-.navbar .dropdown-toggle:hover, 
-.navbar .navbar-toggle:focus, 
-.navbar .dropdown-toggle:focus { background: rgba(black, .4); }
-
-// Adjustments to mobile nav button toggle
-.navbar-toggle {
-	border-color:white;
-	float: left;
-	margin-left: 15px;
-	.icon-bar{
-		background:white;
-	}
-}
+// The nav menu is controlled solely through a checkbox. By default, the menu is positioned
+// off the screen. If the checkbox is checked, then the menu is selected via the adjacent 
+// siblings (`~`) selector and positioned on the left edge.
 
 
 .nav-buttons-wrapper{
     // POSITIONING
+
     position: absolute;
-    top: -700px;
-    opacity:0;
-    top: $nav_height;
-    left: -100%;
+    left: -400px;
+    top: $nav_height + $nav_padding_v * 2;
+    
+	background:$trib-blue2;
+	opacity:0;
+
     width: 100%;
     height:auto;
     max-width: 400px;
-    max-height: calc(100vh - #{$nav_height});
-    transition:left 400ms ease, opacity 400ms ease;
-    background:$trib-blue2;
-	overflow-y:scroll;
+    
+    transition:lefyt 400ms ease, opacity 400ms ease;		
+
 
 }
 
 #toggle{
 	display:none;
-	&:checked{
-		
-
-		& ~ .nav-buttons-wrapper{
-	    	left:0;
-	    	opacity:1;
-	    	transition:left 400ms ease, opacity 400ms ease;		
-		}
+	
+	&:checked ~ .nav-buttons-wrapper{
+    	left:0;
+    	opacity:1;
+    	transition:opacity 400ms ease, left 400ms ease;		
 	}
-
 }
 
 
 
-.navbar .navbar-toggle label{
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	cursor:pointer;
-}
+
+
+// .navbar .navbar-toggle label{
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	height: 100%;
+// 	width: 100%;
+// 	cursor:pointer;
+// }
 
 .nav-buttons{
-	// STYLING
+	// These are the actual menu items
 	margin:0;
 	padding:$space_between_mobile_buttons;
 	list-style-type: none;
@@ -121,99 +171,8 @@ nav.navbar {min-height: $nav_height;}
 	
 }
 
-// .nav .dropdown{
-// 	select{
-//  -webkit-appearance: none;  /*REMOVES DEFAULT CHROME & SAFARI STYLE*/
-//  -moz-appearance: none;  /*REMOVES DEFAULT FIREFOX STYLE*/
-//  border: 0 !important;  REMOVES BORDER
-
-//  background-color: #0d98e8;
-//  color: #fff;
-//  -webkit-border-radius: 5px;
-//  border-radius: 5px;
-//  font-size: 14px;
-//  padding: 10px;
-//  width: 35%;
-//  cursor: pointer;	}
-
-// }
-
-
 @media all and (min-width: $desktop-min-width){
-	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    // margin-left: 0;
-    // padding: 15px 15px 15px 0;
-    // width: 175px;
-    position: absolute;
-    top: 0;
-    left: 20px;
-	}
 
-	.navbar .navbar-toggle{
-		// display:none;
-	}
-
-
-	.nav-buttons-wrapper{
-		// position:static;
-		// opacity:1;
-
-	}
-	// .nav-buttons{
-	// 	// Align buttons
-	// 	display: flex;
-	// 	justify-content: center;
-	// 	flex-wrap:wrap;
-	// 	align-items:center;
-	// 	padding:0;
-
-
-	// 	// sizing, positioning
-	// 	height: 100%;
-	// 	width: 100%;
-	// 	position: absolute;
-	// 	top: 0;
-	// 	left: 0;
-
-	// 	li{
-	// 		margin:0 15px 0 0;
-	// 		height:100%;
-	// 		width: 17%;
- //    		&:last-child{
- //    			margin:0;
- //    		}
- //    	}
-
-	// }
-
-	// .nav-button{
-	// 	// @include sans-serif-text(14px, 1em);
-	// 	// color:white;
-	// 	padding:5px 10px;
-	// 	background-color:rgba(white, .3);
-	// 	text-decoration:none;
-	// 	cursor:pointer;
-	// 	transition:150ms all ease;
-	// 	display: flex;
-	// 	align-items:center;
-	// 	height:100%;
-	// 	border-radius:0;
-
-	// 	&:focus, &:hover{
-	// 		// color:black;
-	// 		background-color:rgba(white, .7);
-	// 		text-decoration:none;
-	// 		// height:125%;
-	// 		transition:150ms all ease;
-	// 	}
-	// 	&--highlight, &--highlight:hover {
-	// 		color:black;
-	// 		background-color:white;
-	// 		text-decoration:none;
-	// 		// height:125%;
-	// 		transition:150ms all ease;
-	// 	}
-	// }
 }
 
 @media all and (min-width: 1000px){
