@@ -18,16 +18,20 @@ $credit_padding: 15px;
 
 .credits{
 	text-align:left;
-	background: rgba($trib-blue4, .5);
-	border-top: 4px solid $trib-blue2;
-	border-bottom: 4px solid $trib-blue2;
+	// background: rgba($trib-blue4, .5);
+	// border-top: 4px solid $trib-blue2;
+	// border-bottom: 4px solid $trib-blue2;
 	padding:25px;
 	margin-top:25px;
 
 	display:flex;
 	flex-wrap:wrap;
 	justify-content:center;
-
+	
+	
+	background: $trib-blue2 url(../img/water-texture-2.jpg) center no-repeat ;
+	background-blend-mode: multiply;
+	background-size: cover
 }
 
 .credits__header{
@@ -36,16 +40,16 @@ $credit_padding: 15px;
 	width:100%;
 	margin:0 15px 15px 0;
 	text-align:center;
+	color:white;
 }
 
 .credits__column{
 	width:$column_width;
 
-	// &__people{
-	// 	width:$column_width - (2 * $credit_padding) - 2px;
-	// 	padding: $credit_padding;
-	// 	border: 1px solid $trib-blue2;
-	// }
+	&--people{
+		background: rgba(white,.2);
+		border-radius: $credits_item_border-radius;
+	}
 
 }
 
@@ -54,20 +58,21 @@ $credit_padding: 15px;
 
 	margin:30px 0 0 0; // This margin aligns it with the links padding spelled out below
 	padding:30px 0 0 0;
-	border-top:1px solid $trib-blue2;
+	border-top:1px solid rgba(white, .5);
 	width:100%;
 	text-align:center;
-
-
+	
 	dt{
 		@include agate();
 		font-weight: bold;
 		margin: 0 0 5px 0;
+		color: rgba(white, .8);
 	}
 
 	dd{
 		@include serif();
 		margin: 0 0 20px 0;
+		color: white;
 	}
 }
 // Story links
@@ -81,7 +86,9 @@ $credit_padding: 15px;
 
 .story-link{
 	padding:10px 0;
+	border: 1px solid transparent;
 	
+
 	&__link{
 		text-decoration:none !important; // Using important here b/c I don't have time to mess around with bootstrap scaffolding at the moment.
 	}
@@ -91,13 +98,13 @@ $credit_padding: 15px;
 		text-transform: uppercase;
 		font-weight:bold;
 		display:block;
-		color:black;
+		color:white;
 	}
 
 	&__description{
 		@include serif();
 		margin-bottom:0;
-		color:black;
+		color:rgba(white, .85);
 	}
 }
 
@@ -116,7 +123,7 @@ $credit_padding: 15px;
 		&--people{
 			width:$column_width - (2 * $credit_padding) - 2px;
 			padding: $credit_padding;
-			border: 1px solid $trib-blue2;
+			// border: 1px solid $trib-blue2;
 		}
 
 	}
@@ -129,11 +136,12 @@ $credit_padding: 15px;
 		position:relative;
 		padding:20px;
 		cursor:pointer;
-		border-radius:5px;
+		border-radius:$credits_item_border-radius;
 		transition:all 150ms ease;
 
 		&:hover{
-			background:rgba(white, .5);
+			background:rgba(white, .1);
+			border-color:white;
 			transition:all 150ms ease;
 			
 			&__description, &__prefix{
@@ -143,8 +151,10 @@ $credit_padding: 15px;
 		}
 
 		&--next{
-			background:white;
-		    border-left: 5px solid $trib-blue2;
+			background:rgba(white, .8);
+		    // border-left: 5px solid $trib-blue2;
+		    color:black;
+			
 			&:before{
 				content:'UP NEXT:';
 				display: block;
@@ -155,12 +165,14 @@ $credit_padding: 15px;
 			}
 			.story-link__prefix{
 			    font-size: 18px;
+			    color:black;
 			}
 			.story-link__description{
 			    font-size: 18px;
+			    color:black;
 			}
 			&:hover{
-				background:white;
+				background:rgba(white, .8);
 			}
 		}
 	}

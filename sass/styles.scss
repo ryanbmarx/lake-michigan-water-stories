@@ -17,6 +17,9 @@ $nav_height: 40px;
 $nav_padding_v: 10px;
 $nav_padding_h: 25px;
 
+// CREDIT CONFIG
+$credits_item_border-radius: 5px;
+
 $narrow-river-max-width-desktop: 650px;
 $narrow-river-max-width: 450px;
 $map-width: 600px;
@@ -70,6 +73,15 @@ $header-bg-color:$trib-gray4;
 
 // ---- WRITE MORE PROJECT STYLES HERE ---------------------------------------------
 
+// This makes an item's rendered/calulated width equal to the width attribute, not 
+// the width + padding + border. This class should be extended.
+.border-box{
+	box-sizing: border-box;
+	&:before, &:after{
+		box-sizing: border-box;
+	}
+}
+
 .hidden{
 	// pickup from bootstrap sass module no longer being used
 	display:none !important;
@@ -78,6 +90,9 @@ $header-bg-color:$trib-gray4;
 .river--narrow{
 	@include river_narrow($narrow-river-max-width);
 }
+
+// RESETS
+body{ margin: 0; }
 
 
 // --------------------------------------------
