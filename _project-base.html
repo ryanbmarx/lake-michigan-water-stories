@@ -35,7 +35,8 @@
         {% endif %}
 
         <div class="swiper-slide">
-          {{ add_p2p_photo(img['slug'], "", image_width, caption, credit) }}
+          {{ add_p2p_photo(img['slug'], "", image_width, caption, credit, True) }}
+          <div class="swiper-lazy-preloader"></div>
         </div>
       {% endfor %}
     </div>
@@ -75,7 +76,7 @@
 </figure>
 {% endmacro %}
 
-{% macro add_p2p_photo(slug, add_class, width, display_caption, display_credit) %}
+{% macro add_p2p_photo(slug, add_class, width, display_caption, display_credit, lazy_load=False) %}
   {% set photo = get_p2p_content_item(slug) %}
   {% if photo|check_if_is_okay_to_publish %}
   
@@ -93,9 +94,19 @@
     {% set caption = caption + "</figcaption>" %}
   {% endif %}
 
+  {% if lazy_load %}
+
+    {% set src = "src=" ~ photo.photo_services_url ~ "/" ~ width %}
+    {#
+      TODO: Fix lazy loading for galleries. 
+      {% set src = "data-src=" ~ photo.photo_services_url ~ "/" ~ width %} 
+    #}
+  {% else %}
+    {% set src = "src=" ~ photo.photo_services_url ~ "/" ~ width %}
+  {% endif %}
       <figure class='image {{ add_class }}'>
-        <img src='{{ photo.photo_services_url }}/{{ width }}' low-res-src='{{ photo.photo_services_url }}/10' alt='{{ photo.title }}' title='{{ photo.title }}'/>
-        <figcaption>{{ caption|process_text }}</figcaption>
+        <img class="{% if lazy_load %}{{ 'swiper-lazy' }}{% endif %}" {# src='{{ photo.photo_services_url }}/{{ width }}' #} {{ src }} {# low-res-src='{{ photo.photo_services_url }}/10' #} alt='{{ photo.title }}' title='{{ photo.title }}'/>
+        {{ caption|process_text }}
       </figure>
     {% else %}
       <p style='padding:20px;background:red; color:yellow'>Photo (slug: {{ slug }}) is not set to "live"</p>  
@@ -252,24 +263,26 @@
               {% block dek %}{% endblock dek %}
             </h1>
           </div>
-          <div class='river--narrow'>
-            {# SOCIAL MEDIA BUTTONS  #}
-            {% set page_url =  "http://" + ROOT_URL + "/" + PATH %}
-            <ul class="social-menu">
-              <li>
-                <a target="_blank" href="https://twitter.com/share?url={{ page_url }}&text={% block tweet %}{{ twitter_description|urlencode }}{% endblock tweet%}">
-                  <i class="fa fa-twitter fa-2x"></i> <span class="hidden">Twitter</span>
-                </a>
-              </li>
-              <li>
-                <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ page_url }}&t={% block facebook %}{{ og_description|urlencode }}{% endblock facebook %}">
-                  <i class="fa fa-facebook fa-2x"></i> <span class="hidden">Facebook</span>
-                </a>
-              </li>
-            </ul>
-            <div class='byline'>
-              <p class='byline-name'>By {% block byline %}{% endblock byline%}</p>
-              <time class='byline-publish-date' itemprop="datePublished">Published: {{ publish_date|xldate_to_datetime|format_date("%B %d, %Y") }}</time>
+          <div class='container'>
+            <div class='river--narrow'>
+              {# SOCIAL MEDIA BUTTONS  #}
+              {% set page_url =  "http://" + ROOT_URL + "/" + PATH %}
+              <ul class="social-menu">
+                <li>
+                  <a target="_blank" href="https://twitter.com/share?url={{ page_url }}&text={% block tweet %}{{ twitter_description|urlencode }}{% endblock tweet%}">
+                    <i class="fa fa-twitter fa-2x"></i> <span class="hidden">Twitter</span>
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ page_url }}&t={% block facebook %}{{ og_description|urlencode }}{% endblock facebook %}">
+                    <i class="fa fa-facebook fa-2x"></i> <span class="hidden">Facebook</span>
+                  </a>
+                </li>
+              </ul>
+              <div class='byline'>
+                <p class='byline-name'>By {% block byline %}{% endblock byline%}</p>
+                <time class='byline-publish-date' itemprop="datePublished">Published: {{ publish_date|xldate_to_datetime|format_date("%B %d, %Y") }}</time>
+              </div>
             </div>
           </div>
         </section>
@@ -333,8 +346,7 @@
 {% endblock omniture %}
 
 {% block library_scripts %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
-
+  {# <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script> #}
   {% include 'subtemplates/_omniture_header_scripts.html' %}
 
   {# For the bootstrap. Can this be removed? #}
