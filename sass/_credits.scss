@@ -73,6 +73,11 @@ $credit_padding: 15px;
 		@include serif();
 		margin: 0 0 20px 0;
 		color: white;
+
+		a{
+			color: white;
+			text-decoration: none;
+		}
 	}
 }
 // Story links
