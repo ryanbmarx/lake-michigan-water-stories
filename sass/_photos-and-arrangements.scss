@@ -1,0 +1,57 @@
+
+
+@mixin distribute_across_columns($num_items, $gutter){
+	width: 90% / $num_items; // fallback
+	width: calc((100% - #{($num_items - 1) * $gutter}) / #{$num_items});
+}
+
+
+.photo-arr {
+	display:flex;
+	justify-content: space-between;
+	align-items: stretch;
+	margin: 25px 0;
+
+	&--0{
+		.image{
+			@include distribute_across_columns(1, $photo_arrangement_gutter);
+		}
+	}
+
+	&--1{
+		display:block;
+
+		.image{
+			@include distribute_across_columns(1, $photo_arrangement_gutter);
+		}
+	}
+
+	&--2{
+		.image{
+			@include distribute_across_columns(2, $photo_arrangement_gutter);
+		}
+	}
+
+	&--3{
+		flex-wrap:wrap;
+		.image{
+			@include distribute_across_columns(2, $photo_arrangement_gutter);
+
+			&:first-child{
+				width: 100%;
+				margin-bottom: $photo_arrangement_gutter;
+
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&--4{
+		flex-wrap:wrap;
+		.image{
+			@include distribute_across_columns(2, $photo_arrangement_gutter);
+		}
+	}
+}
