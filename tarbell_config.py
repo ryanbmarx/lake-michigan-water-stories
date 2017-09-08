@@ -65,7 +65,7 @@ def get_photo_limit(design):
         return 4
     elif design == 5:
         # Not sure what this one is, yet. 
-        return 5
+        return 2
     # If the user has selected a design that's not yet defined, return our "unlimited"
     return 100
 

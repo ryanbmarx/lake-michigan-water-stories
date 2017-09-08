@@ -106,6 +106,7 @@ PHOTO ARRANGEMENTS
 - 2: two photos, side by side.
 - 3: Three photos, the first fullwidth, the other two side-by-side underneath
 - 4: A 2x2 grid of photos
+- 5: Just like #2, except the first image is 75% width, the other is 25%.
 
 AML Example:
 
