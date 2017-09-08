@@ -1,5 +1,56 @@
 {% extends "_base.html" %}
 
+{% macro photo_arr(design_str, p2p_collection_slug_str, image_width, display_caption_bool, display_credit_bool, add_class_str) %}
+  <div class='photo-arr photo-arr--{{ design_str }} {{ add_class_str }}'>
+  {% if design_str|int == 0 %}
+    {# ZERO means a gallery #}
+    {{ gallery(p2p_collection_slug_str, display_caption_bool, display_credit_bool, image_width) }}
+  {% else %}
+    {# OTHERWISE WE'LL JUST USE CSS TO ARRANGE THE PHOTOS #}
+    {% set limit = design_str|get_photo_limit %}
+    {% for img in get_p2p_content_item(p2p_collection_slug_str)['related_items'][0:limit] %}
+      {{ add_p2p_photo(img['slug'], "", image_width, display_caption_bool, display_credit_bool) }}
+    {% endfor %}
+  {% endif %}
+  </div>
+{% endmacro %}
+
+
+{% macro gallery(slug, show_caption_bool, show_credit_bool, image_width) %}
+  {# TODO: Make photo size respect the river #}
+  <div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      {% for img in get_p2p_content_item(slug)['related_items'] %}
+        {% if show_caption_bool %}
+          {% set caption = img.content_item.caption %}
+        {% else %}
+          {% set caption = False %}
+        {% endif %}
+
+        {% if show_credit_bool %}
+          {% set credit = img.content_item.credit %}
+        {% else %}
+          {% set credit = False %}
+        {% endif %}
+
+        <div class="swiper-slide">
+          {{ add_p2p_photo(img['slug'], "", image_width, caption, credit) }}
+        </div>
+      {% endfor %}
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</div>
+{% endmacro %}
+
 {% macro aside(aside_type, add_class) %}
     {% if aside_type == 'subscribe' %}
       {% set refer_url = refers[aside_type + "_url"]['text'] %}
@@ -29,22 +80,22 @@
   {% if photo|check_if_is_okay_to_publish %}
   
   {% set caption = "" %}
+  
   {% if display_caption %}
-    {% set caption = caption + photo.caption|striptags|strip_whitespace %}
+    {% set caption = caption + "<figcaption>" + photo.caption|striptags|strip_whitespace %}
   {% endif %}
+  
   {% if display_credit %}
     {% set caption = caption + " (" + photo.credit|striptags|strip_whitespace + ")" %}
   {% endif %}
-      <figure class='image image--lazy {{ add_class }}'>
-        <img data-full-res-src='{{ photo.photo_services_url }}/{{ width }}' src='{{ photo.photo_services_url }}/10' alt='{{ photo.title }} title='{{ photo.title }}'/>
 
-        <noscript>
-          {# Experiement to see if this is a suitable fallback for noJS users #}
-            {# <img src='{{ photo.photo_services_url }}/{{ width }}' alt='{{ photo.title }} title='{{ photo.title }}'/> #}
-        </noscript>
+  {% if display_caption %}
+    {% set caption = caption + "</figcaption>" %}
+  {% endif %}
 
-
-        <figcaption>{{ caption }}</figcaption>
+      <figure class='image {{ add_class }}'>
+        <img src='{{ photo.photo_services_url }}/{{ width }}' low-res-src='{{ photo.photo_services_url }}/10' alt='{{ photo.title }}' title='{{ photo.title }}'/>
+        <figcaption>{{ caption|process_text }}</figcaption>
       </figure>
     {% else %}
       <p style='padding:20px;background:red; color:yellow'>Photo (slug: {{ slug }}) is not set to "live"</p>  
@@ -117,34 +168,22 @@
     </div>
 {% endmacro %}
 
-{% macro add_video(id, link_base_url, addon_class="", header, video_slug) %}
-  
+{% macro add_video(id, addon_class="", header, video_slug) %}
+
     {% set video = get_p2p_content_item(video_slug) %}
-    {# {{ video }} #}
-    {# <img src="{{ photo['alt_thumbnail_url']|format_video_thumb }}" /> #}
+
     {% if addon_class %}
         {% set class = addon_class %}
     {% else %}
         {% set class = "" %}
     {% endif %}
-    {# Randomstring for an id. #}
-    {% set id = id|generate_id %}
-    {% set video_player_ref = link_base_url|get_video_ref %}
-
    <div class='video {{ class }}'>
-        {% if header %}
-       <h4 class='video__headline'>{{ header }}</h4>
-       {% endif %}
+      {% if header %}
+        <h4 class='video__headline'>{{ header }}</h4>
+      {% endif %}
        <div class='video__wrapper'>
-       {# <img class='video__thumb' src="{{ video['alt_thumbnail_url']|format_video_thumb }}" /> #}
-{#        <button class='video__play-icon'>
-          <i class="fa fa-play-circle-o" aria-hidden="true"></i>
-       </button> #}
         <div class='video__object-wrapper'>
-
-
-
-        <video data-account="3690581440001"
+          <video data-account="3690581440001"
             data-player="BylPHnG8"
             data-embed="default"
             data-video-id="ref:{{ video['id'] }}"
@@ -152,38 +191,8 @@
             tabindex="-1" 
             class="video-js"
             controls></video>
-        {# 
-
-
-
-<video autoplay="" class="vjs-tech" id="trb_mediamanager_93449722_html5_api" data-embed="default" data-account="3690581440001" data-video-id="ref:93449722" data-player="HyGaz3iJeZ" tabindex="-1" preload="auto" src="blob:http://www.chicagotribune.com/bec5ad6e-6156-4f0f-9876-722f14faf3ed"></video>
-
-
-        <object id='{{ id }}' class='BrightcoveExperience'>
-          <param name='bgcolor' value='#FFFFFF' />
-          <param name='wmode' value='transparent' />
-          <param name='autoStart' value='false' />
-          <param name='sectionName' value ='/news/watchdog' />
-          <param name='contentItemType' value ='embed' />
-          <param name='omnitureServer' value='' />
-          <param name='omnitureAcct' value='' />
-          <param name='playerID' value='3688749019001' />
-          <param name='playerKey' value='AQ~~,AAADW0fLtgE~,MIfKkt0NgAvSglhcwVIGmENcE3304kfQ' />
-          <param name='adServerURL' value='' />
-          <param name='additionalAdTargetingParams' value='' />
-          <param name='externalAds' value='true' />
-          <param name='linkBaseURL' value='{{ link_base_url }}' />
-          <param name='isVid' value='true' />
-          <param name='isUI' value='true' />
-          <param name='swliveconnect' value='true' />
-          <param name='dynamicStreaming' value='true' />
-          <param name='showNoContentMessage' value='true' />
-          <param name='secureConnections' value='true' />
-          <param name='secureHTMLConnections' value='true' />
-          <param name='@videoPlayer' value='ref:{{ video_player_ref }}' />
-        </object> #}
-    </div>
-    </div>
+        </div>
+      </div>
     </div>
 {% endmacro %}
 
@@ -201,7 +210,10 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@chicagotribune" />
-  <meta name="twitter:creator" content="@jasongrotto" />
+  <meta name="twitter:creator" content="@kcecireyes" />
+  <meta name="twitter:creator" content="@tgregoryreports" />
+  {# <meta name="twitter:creator" content="@OCONNEL?" /> #}
+  <meta name="twitter:creator" content="@AngelaTCR" />
 
   <meta property="og:url" content="http://{{ ROOT_URL }}/{{ PATH }}" />
   <meta name="keywords" content="{{ keywords }}">
@@ -227,45 +239,40 @@
     <article>
       {% set part = part %}
       {% include 'subtemplates/' + part + '/_header-supplement.html' ignore missing %}
-      <section class='story-header story-header--{{ part }}'>
-          <div class='story-header__project-title'>
-            <p>Tribune watchdog: <br />{{ title }}</p>
-          </div>
+        <section class='story-header story-header--{{ part }}'>
+          <div class='story-header__inner'>
+            <div class='story-header__project-title'>
+              <p>{{ title_prefix }}: <br />{{ title }}</p>
+            </div>
 
-          <h2 class='story-header__headline'>
-            {% block headline %}{% endblock headline %}
-          </h2>
-          <h1 class='story-header__subheadline' itemprop="headline">
-            {% block dek %}{% endblock dek %}
-          </h1>
+            <h2 class='story-header__headline'>
+              {% block headline %}{% endblock headline %}
+            </h2>
+            <h1 class='story-header__subheadline' itemprop="headline">
+              {% block dek %}{% endblock dek %}
+            </h1>
           </div>
-        <div class='container'>
-          {# <div class='row'> #}
-            {# <div class='col-xs-12'> #}
-              <div class='river--narrow'>
-                {# SOCIAL MEDIA BUTTONS  #}
-                {% set page_url =  "http://" + ROOT_URL + "/" + PATH %}
-                <ul class="social-menu">
-                    <li>
-                        <a target="_blank" href="https://twitter.com/share?url={{ page_url }}&text={% block tweet %}{{ twitter_description|urlencode }}{% endblock tweet%}">
-                            <i class="fa fa-twitter fa-2x"></i> <span class="hidden">Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ page_url }}&t={% block facebook %}{{ og_description|urlencode }}{% endblock facebook %}">
-                            <i class="fa fa-facebook fa-2x"></i> <span class="hidden">Facebook</span>
-                        </a>
-                    </li>
-                </ul>
-                <div class='byline'>
-                  <p class='byline-name'>By {% block byline %}{% endblock byline%}</p>
-                  <time class='byline-publish-date' itemprop="datePublished">Published: {{ publish_date|xldate_to_datetime|format_date("%B %d, %Y") }}</time>
-                </div>
-              </div>
-            {# </div> #}
-          {# </div> #}
-        </div>
-      </section>
+          <div class='river--narrow'>
+            {# SOCIAL MEDIA BUTTONS  #}
+            {% set page_url =  "http://" + ROOT_URL + "/" + PATH %}
+            <ul class="social-menu">
+              <li>
+                <a target="_blank" href="https://twitter.com/share?url={{ page_url }}&text={% block tweet %}{{ twitter_description|urlencode }}{% endblock tweet%}">
+                  <i class="fa fa-twitter fa-2x"></i> <span class="hidden">Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ page_url }}&t={% block facebook %}{{ og_description|urlencode }}{% endblock facebook %}">
+                  <i class="fa fa-facebook fa-2x"></i> <span class="hidden">Facebook</span>
+                </a>
+              </li>
+            </ul>
+            <div class='byline'>
+              <p class='byline-name'>By {% block byline %}{% endblock byline%}</p>
+              <time class='byline-publish-date' itemprop="datePublished">Published: {{ publish_date|xldate_to_datetime|format_date("%B %d, %Y") }}</time>
+            </div>
+          </div>
+        </section>
     {% endblock story_header %}
         <div class="container" itemprop="articleBody">
           <div class='river--narrow'>{% block story %}{% endblock story %}</div>
@@ -326,10 +333,12 @@
 {% endblock omniture %}
 
 {% block library_scripts %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+
   {% include 'subtemplates/_omniture_header_scripts.html' %}
 
-{# For the bootstrap. Can this be removed? #}
-{# <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> #}
+  {# For the bootstrap. Can this be removed? #}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
   {# For the adverts #}
   <script src="//media.apps.chicagotribune.com/ads/v2.1.4/ads.min.js" defer async></script>

@@ -38,6 +38,38 @@ CONTENT_ITEMS_WORKSHEET = 'p2p_content_items'
 # text and other formatting filters #
 ############################
 
+@blueprint.app_template_filter('get_photo_limit')
+def get_photo_limit(design):
+    """
+    The numerous photo designs breakdown with too many photos. This filter will
+    return a limit on the number of photos allowed. The returned value is used as a limiter
+    on the for loop which outputs the individual images.
+    """
+    
+    design = int(design)
+
+    if design == 0:
+        # option 0 is a gallery, so it doesn't realy need any limits. We'll use 100 as an analogue for "unlimited"
+        return 100
+    elif design == 1:
+        # Option 1 is just plain ol' stacked photos, one after another. Again, no limit needed.
+        return 100
+    elif design == 2:
+        # Side by side.
+        return 2
+    elif design == 3:
+        # Side by side with a fullwidth photo on top.
+        return 3
+    elif design == 4:
+        # 2x2 grid
+        return 4
+    elif design == 5:
+        # Not sure what this one is, yet. 
+        return 5
+    # If the user has selected a design that's not yet defined, return our "unlimited"
+    return 100
+
+
 @blueprint.app_template_filter('xldate_to_datetime')
 def xldate_to_datetime(xldate):
     return xldate
@@ -184,6 +216,8 @@ def get_extra_context():
     data = dict(data)
     return data
 
+# get_drive_api_stuff()
+
 @blueprint.app_template_filter()
 def add_ptags(text):
     p_text = '<p>'+text; # opening p
@@ -326,6 +360,10 @@ DEFAULT_CONTEXT = {
     'title': 'Lake Michigan Water Stories'
 }
 
+# DEFAULT_CONTEXT.update(**get_extra_context())
+get_drive_api_stuff()
+DEFAULT_CONTEXT.update(**get_extra_context())
+
 
 @register_hook('preview')
 @register_hook('generate')
@@ -335,15 +373,3 @@ def refresh_archie(site):
     """
     get_drive_api_stuff()
     DEFAULT_CONTEXT.update(**get_extra_context())
-
-
-
-# Make the archiemal thing auto
-
-# @register_hook('preview')
-# @register_hook('generate')
-# def copy_assets(site, output_root=None, extra_context=None):
-#     """Copy assets in non-standard directories to a more logical place"""
-#     # Check if we've already done this to avoid slow filesystem checks
-#     # on every request
-#     t

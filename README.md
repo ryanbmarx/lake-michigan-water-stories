@@ -91,6 +91,27 @@ AML Example:
     add_class: <css class> (optional)
     close_river: <True/False> (optional)
 
+PHOTO ARRANGEMENTS
+==================
+
+*NEW FOR THIS ITERATION:* Running multiple photos in nicely designed configurations can enhance storytelling in wonderful ways. P2P photos are pulled from a P2P collection by the collection slug. There are several coniguration options, including a gallery, from which to choose. The options are identified by a number, and you might notice that design No. 2 requires only two photos. Only the first `n` photos will be displayed, with `n == design No.`. The exceptions are 0 and 1, which will display up to 100 photos, if you really need that many:
+
+- 0: Formats as a touch-compatible gallery
+- 1: A single stack of photos
+- 2: two photos, side by side.
+- 3: Three photos, the first fullwidth, the other two side-by-side underneath
+- 4: A 2x2 grid of photos
+
+AML Example:
+
+    type: photo_arr
+    slug: <P2P COLLECTION slug>
+    design: <number from above list>
+    display_credit: <True/False> (optional, for the photos)
+    display_caption: <True/False> (optional, for the photos)
+    add_class: <css class> (optional)
+    close_river: <True/False> (optional)
+
 
 REFERS
 ======
@@ -107,7 +128,7 @@ There are several items worthy of <aside> refers, from subscription calls to act
 AML Example: 
 
     type: refer
-    content: <methods/subscribe/press_release/appeals/assessor_response/study>
+    content: <methods/subscribe>
     add_class: <css class> (optional)
     close_river: <True/False> (optional)
 

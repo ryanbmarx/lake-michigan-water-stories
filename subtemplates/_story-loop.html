@@ -7,6 +7,7 @@
 {% from '_project-base.html' import add_video as add_video with context %}
 {% from '_project-base.html' import pullquote as pullquote  with context%}
 {% from '_project-base.html' import aside as aside  with context%}
+{% from '_project-base.html' import photo_arr as photo_arr  with context%}
 
 {% if s.close_river|upper == TRUE or s.close_river|upper == "TRUE" %}
     </div>
@@ -39,7 +40,7 @@
     {{ add_photo(s.url, s.add_class, s.caption, s.alt)}}
 {% elif type == "advert" and s.ad_type and s.ad_alignment %}
     {{ ad(s.ad_type, s.ad_alignment) }}
-{% elif type == "video" and s.id and s.link_base_url %}
+{% elif type == "video" and s.video_slug %}
     {% if s.add_class %}
         {% set add_class = s.add_class %}
     {% else %}
@@ -52,7 +53,8 @@
         {% set header = False %}
     {% endif %}
 
-    {{ add_video(s.id, s.link_base_url, add_class, header, s.video_slug) }}
+    {{ add_video(s.id, add_class, header, s.video_slug) }}
+
 {% elif type == "pullquote" and s.quote_text and s.quote_attribution %}
     {% if s.quote_attribution_secondary %}
         {% set quote_attribution_secondary = s.quote_attribution_secondary %}
@@ -66,6 +68,7 @@
     {% else %}
         {% set add_class = "" %}
     {% endif %}
+
     {% if s.close_river|upper == TRUE or s.close_river|upper == "TRUE" %}
         {% set width = 1200 %}
     {% else %}
@@ -95,8 +98,37 @@
         {% set add_class = "" %}
     {% endif %}
     {{ aside(s.content, add_class) }}
-{% endif %}
+{% elif type == "photo_arr" %}
 
+    {% if s.add_class %}
+        {% set add_class = s.add_class %}
+    {% else %}
+        {% set add_class = "" %}
+    {% endif %}
+
+    {% if s.close_river|upper == TRUE or s.close_river|upper == "TRUE" %}
+        {% set width = 1200 %}
+    {% else %}
+        {% set width = 650 %}
+    {% endif %}
+
+    {% if s.display_caption == false or s.display_caption|upper == "FALSE" %}
+        {% set display_caption = False %}
+    {% else %}
+        {% set display_caption = True %}
+    {% endif %}
+
+    {% if s.display_credit == false or s.display_credit|upper == "FALSE" %}
+        {% set display_credit = False %}
+    {% else %}
+        {% set display_credit = True %}
+    {% endif %}
+    
+    {% if s.design and s.slug %}
+        {{ photo_arr(s.design, s.slug, width, display_caption, display_credit, add_class)}}
+    {% endif %}
+
+{% endif %}
 
 {% if s.close_river|upper == TRUE or s.close_river|upper == "TRUE" %}
     <div class='river--narrow'>
