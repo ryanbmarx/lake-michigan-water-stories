@@ -1,6 +1,7 @@
 // import "babel-polyfill";
 const inView = require('in-view');
 const pym = require('pym.js');
+// const swiper = require('swiper.min.js');
 // const boot = require('bootstrap.js');
 
 // -------------------------------------------------------------------
@@ -57,7 +58,7 @@ window.addEventListener('load', function() {
         // }
 
     // First, let's load the not lazy graphics
-    // let pymParents = {};
+    let pymParents = {};
 
     const graphics = document.querySelectorAll(".chart:not(.chart--lazy) .graphic-embed");
     
@@ -66,8 +67,7 @@ window.addEventListener('load', function() {
                 pymId = graphic.id,
                 pymUrl = graphic.dataset.iframeUrl;
         
-            // pymParents[pymId] = new pym.Parent(pymId, pymUrl, {});
-		new pym.Parent(pymId, pymUrl, {});
+            pymParents[pymId] = new pym.Parent(pymId, pymUrl, {});
     }
     
     // Let's set our lazyload offset to 500px. The iframe should be loaded once it's 500px frmo being seen.
@@ -91,6 +91,20 @@ window.addEventListener('load', function() {
             el.setAttribute('src', src);
         });
 
+
+    const mySwiper = new Swiper('.swiper-container', {
+        speed: 400,
+        spaceBetween: 100,
+        slidesPerView: 1,
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 30,
+        loop: true
+
+
+    });   
     // if (!isMobile() && document.createElement('video').canPlayType('video/mp4') != "" && document.querySelectorAll('.header-video').length > 0){
     //     // Prep the pause button, if video is supported and we are not on mobile and there is a video header on the page.
     //     const   play = document.getElementById('play'),
