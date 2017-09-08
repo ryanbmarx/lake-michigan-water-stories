@@ -1,10 +1,16 @@
 // @import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 /*
 font-family: 'Asar', serif;
 font-family: 'Lora', serif;
 font-family: 'IM Fell French Canon', serif;
 font-family: 'Suranna', serif;
+font-family: 'Yanone Kaffeesatz', sans-serif;
+font-family: 'Quicksand', sans-serif;
 */
 
 
@@ -24,7 +30,7 @@ p {
 h1{
 	// Should only be used once per page and only should be used as the main, hammerheadline
 	@include serif-text(50px, .9em, 700);
-	@include display_type('serif');
+	@include display_type('sans-serif');
 	text-transform:uppercase;
 	text-align:center;
 	margin: 0 0 10px 0;
@@ -42,9 +48,27 @@ h2{
 h3{
 	// These are story breakers and should remain the top-level header inside a story.
 	@include serif-text(20px, 1.3em, bold);
-	@include display_type('serif');
-
+	@include display_type('sans-serif');
+	position:relative;
 	margin: 0 0 25px 0;
+	color: white;
+	z-index: 100;
+	padding: 0 0 0 10px;
+	text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+	&:after{
+		content: "";
+		display: block;
+		height: 36px;
+		width: 100%;
+
+		position: absolute;
+		top: -5px;
+		left: 0;
+		z-index: -1;
+		background: $trib-blue1;
+	}
 }
 
 @media all and (min-width: $tablet-min-width){

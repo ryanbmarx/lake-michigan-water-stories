@@ -3,11 +3,8 @@ $logo_width: 200px;
 
 // Give the navbar space to exist without overlapping anything at the top of the page.
 body{
-	padding-top:$nav_height;
+	padding-top:$nav_height + $nav_padding_v * 2;
 }
-
-
-
 
 .navbar{
 	background: rgba($trib-blue2, .92);
@@ -16,6 +13,7 @@ body{
 	top:0;
 	left: 0;
 	width: 100%;
+    z-index: 10000;
 
 	&__inner{
 		padding: $nav_padding_v $nav_padding_h;
@@ -117,26 +115,13 @@ body{
 
 #toggle{
 	display:none;
-	
+
 	&:checked ~ .nav-buttons-wrapper{
     	left:0;
     	opacity:1;
     	transition:opacity 400ms ease, left 400ms ease;		
 	}
 }
-
-
-
-
-
-// .navbar .navbar-toggle label{
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// 	height: 100%;
-// 	width: 100%;
-// 	cursor:pointer;
-// }
 
 .nav-buttons{
 	// These are the actual menu items

@@ -4,7 +4,7 @@
 	
 	&__inner{
 		@extend %border-box;
-		background: url(../img/water-texture-2.jpg) top center no-repeat;
+		background: url(../img/water-background-1.jpg) bottom center no-repeat;
 		background-size: cover;
 		padding: 50px;
 		margin: 0 0 25px 0;
@@ -219,49 +219,49 @@
 
 @media all and (min-width: $desktop-min-width){
 
-	.video-controls{
-		// padding: 15px;
-		.video-control{
-			display:none;
-			border:none;
-			padding: 5px;
-			background: rgba(white, .3);
-			margin: 5px;
-			border-radius: 3px;
-			transition: background 200ms;
-			cursor:pointer;
+	// .video-controls{
+	// 	// padding: 15px;
+	// 	.video-control{
+	// 		display:none;
+	// 		border:none;
+	// 		padding: 5px;
+	// 		background: rgba(white, .3);
+	// 		margin: 5px;
+	// 		border-radius: 3px;
+	// 		transition: background 200ms;
+	// 		cursor:pointer;
 
-			&:hover, &:focus{
-				background: rgba(white, .9);
-				transition: background 200ms;
-			}
+	// 		&:hover, &:focus{
+	// 			background: rgba(white, .9);
+	// 			transition: background 200ms;
+	// 		}
 
-			&--visible{
-				display:block;
-			}
+	// 		&--visible{
+	// 			display:block;
+	// 		}
 
-			&--pause{}
+	// 		&--pause{}
 
-			&--play{}
-		}
-	}
+	// 		&--play{}
+	// 	}
+	// }
 	
 	.story-header {
 
-		&__display{
-			// NOTE: Since we're dealing with video, it would seem easier to have a known height, sted the variable VH height.
-			height: 500px;
-			overflow:hidden;
-			margin-bottom:25px;
-			padding: 25px;
-		}
+		// &__display{
+		// 	// NOTE: Since we're dealing with video, it would seem easier to have a known height, sted the variable VH height.
+		// 	height: 500px;
+		// 	overflow:hidden;
+		// 	margin-bottom:25px;
+		// 	padding: 25px;
+		// }
 
-		&__caption{
-			color: white;
-			bottom: 0;
-			top: auto;
-			max-width: 300px;
-		}
+		// &__caption{
+		// 	color: white;
+		// 	bottom: 0;
+		// 	top: auto;
+		// 	max-width: 300px;
+		// }
 
 		&__headline{
 			font-size:80px;
@@ -271,22 +271,22 @@
 			font-size:30px;
 		}
 
-		&__video{
-			display:block;
-			position: absolute;
-			top:0;
-			left:0;
-			width:100%;
-			height:100%;
-		}
+		// &__video{
+		// 	display:block;
+		// 	position: absolute;
+		// 	top:0;
+		// 	left:0;
+		// 	width:100%;
+		// 	height:100%;
+		// }
 
-		&__video-controls{
+		// &__video-controls{
+		// // display:block;
+		// position: absolute;
+		// top: 0;
+		// right: 0;
 		// display:block;
-		position: absolute;
-		top: 0;
-		right: 0;
-		display:block;
-		}
+		// }
 	}
 
 	.story-header .social-menu{
@@ -318,18 +318,18 @@
 	}
 
 	// These tweaks remove the video header from the sidebars and modify the design
-	.story-header {
-		&--methods, &--assessor_response, &--appeals_methods {
-			.story-header__subheadline {
-				font-size: 55px;
-				// max-width: 500px;
-				margin: 0 auto 10px auto;
-			}
+	// .story-header {
+	// 	&--methods, &--assessor_response, &--appeals_methods {
+	// 		.story-header__subheadline {
+	// 			font-size: 55px;
+	// 			// max-width: 500px;
+	// 			margin: 0 auto 10px auto;
+	// 		}
 
-			// .story-header__subheadline {
-			// 	font-size: 23px;
-			// }
-		}
-	}
+	// 		// .story-header__subheadline {
+	// 		// 	font-size: 23px;
+	// 		// }
+	// 	}
+	// }
 }
 
