@@ -2,6 +2,11 @@
 
 A [Tarbell](http://tarbell.io) project.
 
+#TODO:
+
+    - Lazyload the galleries
+    - Somehow mobileize the header background images.
+
 IN BRIEF
 --------
 
