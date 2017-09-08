@@ -28,6 +28,7 @@ $credits_item_border-radius: 5px;
 $narrow-river-max-width-desktop: 650px;
 $narrow-river-max-width: 450px;
 $container_max_width: 1200px;
+$container_padding_h: 15px;
 
 // VIDEOS
 $notched_width: 350px;
@@ -105,6 +106,7 @@ $photo_arrangement_gutter: 25px;
 	// Keep the overall container at this width;
 	max-width:$container_max_width;
 	margin: 0 auto;
+	padding: 0 $container_padding_h
 }
 
 // RESETS
