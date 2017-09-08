@@ -1,10 +1,10 @@
 {% macro add_people(role) %}
 	{% set people = "XX" %}
-	{%- for person in credits if person[role] == 1 -%}
+	{%- for person in credits|sort(False, attribute="name_last") if person[role] == 1 -%}
 		{% if person.link %}
 			<a href="{{ person.link }}">{{ person.name }}</a>{% if not loop.last %}, {% endif %}
 		{% else %}
-			{{ person.name }}{% if not loop.last %}, {% endif %}
+			{{ person.name_first }} {{ person.name_last }}{% if not loop.last %}, {% endif %}
 		{% endif %}
 	{%- endfor -%}
 {% endmacro %}
