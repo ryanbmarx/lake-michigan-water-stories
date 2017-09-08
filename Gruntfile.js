@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     options: {
       browserifyOptions: {
         debug: true,
-        paths:['js/src/', 'node_modules/bootstrap-sass/assets/javascripts']
+        paths:['js/src/', 'node_modules/bootstrap-sass/assets/javascripts', 'node_modules/swiper/dist/js']
       }
     },
     app: {
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
     options: {
       outputStyle: 'compressed',
       sourceMap: true,
-      includePaths: [ 'sass/', 'node_modules/trib-styles/sass/', 'node_modules/bootstrap-sass/assets/stylesheets/' ]
+      includePaths: [ 'sass/', 'node_modules/swiper/dist/css', 'node_modules/trib-styles/sass/', 'node_modules/bootstrap-sass/assets/stylesheets/' ]
     },
     app: {
       files: {
