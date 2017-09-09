@@ -10,6 +10,8 @@
 
 	&__headline{
 		@include label7();
+		@include display_type('sans-serif');
+
 		margin: 0 0 10px 0;
 	}
 
@@ -31,7 +33,6 @@
 }
 
 @media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
-
 
 	.video.video--right{
 		width: $notched_width + $notched_video_add_on;

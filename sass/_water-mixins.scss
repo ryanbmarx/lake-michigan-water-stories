@@ -28,6 +28,13 @@
 	}
 }
 
+@mixin display-text($type){
+	// A convenience mixin for people who can't freaking remember whether it is text or type!
+	@include display-type($type);
+}
+
+
+
 @keyframes bounce {
     0% { transform: translate(0,0); }
     50% { transform: translate(0,-0.2em); }
