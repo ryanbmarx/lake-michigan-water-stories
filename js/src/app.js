@@ -1,7 +1,7 @@
 // import "babel-polyfill";
 const inView = require('in-view');
 const pym = require('pym.js');
-// const swiper = require('swiper.min.js');
+const Swiper = require('swiper.min.js');
 // const boot = require('bootstrap.js');
 
 // -------------------------------------------------------------------
@@ -24,12 +24,6 @@ if (document.getElementById('comments-button')){
     }, false);
 }
 
-// Hide/show the mobile navigation menu
-// document.getElementById('mobile-nav-toggle').addEventListener('click', function(e){
-// 	const mobileNavButton = document.getElementById('nav-buttons-wrapper');
-// 	mobileNavButton.classList.toggle('nav-buttons-wrapper--active');
-// }, false);
-
 // function pauseVideo(video){
 //     pause.classList.toggle('video-control--visible');
 //     play.classList.toggle('video-control--visible');
@@ -44,18 +38,6 @@ if (document.getElementById('comments-button')){
 
 // Listen for the loaded event 
 window.addEventListener('load', function() {  
-    
-    // Start by working around the dumb chrome bug that doesn't allow you to link to an ID on the page.
-    // https://stackoverflow.com/questions/38588346/anchor-a-tags-not-working-in-chrome-when-using
-    
-        // const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-        // if (window.location.hash && isChrome) {
-        //     setTimeout(function () {
-        //         var hash = window.location.hash;
-        //         window.location.hash = "";
-        //         window.location.hash = hash;
-        //     }, 300);
-        // }
 
     // First, let's load the not lazy graphics
     let pymParents = {};
@@ -91,20 +73,36 @@ window.addEventListener('load', function() {
             el.setAttribute('src', src);
         });
 
-
     const mySwiper = new Swiper('.swiper-container', {
         speed: 400,
-        spaceBetween: 100,
         slidesPerView: 1,
+        centeredSlides: true,
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
+        // scrollBar: '.swiper-scrollbar',
         paginationClickable: true,
         spaceBetween: 30,
-        loop: true
+        loop: true,
+        // Disable preloading of all images
+        // preloadImages: false,
+        // // Enable lazy loading
+        // lazyLoading: true,
+        // watchSlidesProgress:true,
+        // watchSlidesVisibility:true
+    }); 
+
+    
+
+    document.querySelector('.swiper-button-next').addEventListener('click', e => {
+        mySwiper.slideNext();
+    });
+
+    document.querySelector('.swiper-button-prev').addEventListener('click', e => {
+        mySwiper.slidePrev();
+    });
 
 
-    });   
     // if (!isMobile() && document.createElement('video').canPlayType('video/mp4') != "" && document.querySelectorAll('.header-video').length > 0){
     //     // Prep the pause button, if video is supported and we are not on mobile and there is a video header on the page.
     //     const   play = document.getElementById('play'),

@@ -6,6 +6,7 @@ A [Tarbell](http://tarbell.io) project.
 
     - Lazyload the galleries
     - Somehow mobileize the header background images.
+    - // TODO: FIX THE PAGINATION ON GALLERIES
 
 IN BRIEF
 --------
