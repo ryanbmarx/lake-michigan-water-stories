@@ -61,11 +61,18 @@ h3{
 	text-transform: uppercase;
     letter-spacing: 0.05em;
     text-align: right;
+    text-shadow: 0px 0 8px rgba(black, .9);
+    
+	@supports (clip-path: inset(0 0px 0.3em 0px)){
+	    // Use clip path if it is supported
+	    clip-path: inset(0 0px 0.3em 0px); // totally experiemental. Okay if it fails.
+	}
 
-//     transform: translate(0,-6px);
-//     background: #12182d url(https://petapixel.com/assets/uploads/2014/09/xOxiA6m.gif) center center no-repeat;
-//     background-size: cover;
-//     background-blend-mode: multiply;
+	@supports not (clip-path: inset(0 0px 0.3em 0px)){
+		// Use transform as a fallback
+	    transform: translate(0, -0.15em);
+	}
+
 	&:after{
 		content: "";
 		display: block;
