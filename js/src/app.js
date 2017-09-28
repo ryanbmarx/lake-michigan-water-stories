@@ -69,39 +69,48 @@ window.addEventListener('load', function() {
     // Also, let's lazyload the images
     inView('.image--lazy img')
         .on('enter', el => {
+
             const src = el.dataset.fullResSrc;
+            console.log('adding', src);
             el.setAttribute('src', src);
         });
 
-    const mySwiper = new Swiper('.swiper-container', {
-        speed: 400,
-        slidesPerView: 1,
-        centeredSlides: true,
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        // scrollBar: '.swiper-scrollbar',
-        paginationClickable: true,
-        spaceBetween: 30,
-        loop: true,
-        // Disable preloading of all images
-        // preloadImages: false,
-        // // Enable lazy loading
-        // lazyLoading: true,
-        // watchSlidesProgress:true,
-        // watchSlidesVisibility:true
-    }); 
+    const swipers = [].slice.call(ocument.querySelectorAll('.swiper-container'));
+    if (swipers.length > 0){
+        const slideshows = {};
+        swipers.forEach((swiper, index) => {
+            //if there are swipers, iterate over the containers array and init them.
+            slideshows[index] = new Swiper('.swiper-container', {
+                speed: 400,
+                slidesPerView: 1,
+                centeredSlides: true,
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                // scrollBar: '.swiper-scrollbar',
+                paginationClickable: true,
+                spaceBetween: 30,
+                loop: true,
+                // Disable preloading of all images
+                // preloadImages: false,
+                // // Enable lazy loading
+                // lazyLoading: true,
+                // watchSlidesProgress:true,
+                // watchSlidesVisibility:true
+            }); 
 
-    
+            
 
-    document.querySelector('.swiper-button-next').addEventListener('click', e => {
-        mySwiper.slideNext();
-    });
+            slideshows[index].querySelector('.swiper-button-next').addEventListener('click', e => {
+                slideshows[index].slideNext();
+            });
 
-    document.querySelector('.swiper-button-prev').addEventListener('click', e => {
-        mySwiper.slidePrev();
-    });
+            slideshows[index].querySelector('.swiper-button-prev').addEventListener('click', e => {
+                slideshows[index].slidePrev();
+            });            
+        })
 
+}
 
     // if (!isMobile() && document.createElement('video').canPlayType('video/mp4') != "" && document.querySelectorAll('.header-video').length > 0){
     //     // Prep the pause button, if video is supported and we are not on mobile and there is a video header on the page.
