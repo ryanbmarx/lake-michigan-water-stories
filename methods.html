@@ -1,0 +1,50 @@
+{% extends "_project-base.html" %}
+
+
+{# THIS MATTERS MOST. IT CHANGES WHICH STUFF GETS PULLED IN #}
+{% set part = '3d' %}
+
+{# VIDEO BLOCKS #}
+{% block show_video %}False{% endblock show_video %}
+{% block video_poster %}{{ part }}{% endblock video_poster %}
+{% block video_file_name %}{{ part }}{% endblock video_file_name %}
+{% block mobile_image_alt_text %}{{ "XX" }}{% endblock mobile_image_alt_text %}
+{% block video_credit %}{{ "XX" }}{% endblock video_credit %}
+
+{# TEXT BLOCKS  #}
+{% block headline %}{{ headlines[part ~ "_headline"]['value'] }}{% endblock headline %}
+{% block dek %}{{ headlines[part ~ "_dek"]['value'] }}{% endblock dek %}
+
+{% block byline %}
+    {{ add_author("Cecilia Reyes", "email@chicagotribune.com") }}
+{% endblock byline%}
+{% block opengraph_story_specific scoped %}
+    <meta property="og:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
+    <meta property="og:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />
+    <meta property="og:image" content="{{ headlines[part ~ '_thumb']['value'] }}" />
+    <meta name="description" content="{{ headlines[part ~ '_seo_description']['value'] }}" />
+
+    <meta name="twitter:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
+    <meta name="twitter:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />
+    <meta name="twitter:image" content="{{ headlines[part ~ '_thumb']['value'] }}" />
+    <meta name="twitter:image:alt" content="{{ headlines[part ~ '_thumb_alt_text']['value'] }}" />
+{% endblock opengraph_story_specific %}
+
+{# SOCIAL MEDIA BUTTONS #}
+{% block tweet %}{{ headlines[part ~ '_twitter']['value'] }}{% endblock tweet %}
+{% block facebook %}{{ headlines[part ~ '_og_description']['value']|urlencode }}{% endblock facebook %}
+
+{% block story %}
+    {%- for story in stories[part] %}
+        {% set s = story %}
+        {% include 'subtemplates/_story-loop.html' %}
+    {% endfor -%}
+{% endblock %}
+
+{# {% block library_scripts %}
+{% endblock library_scripts %}
+ #}
+{# {% block scripts %}
+    {{ super() }}
+    <script src="http://{{ ROOT_URL }}/js/day1header.min.js"></script>
+{% endblock %} #}
