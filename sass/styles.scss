@@ -1,8 +1,6 @@
 // Bootstrap-sass documentation https://github.com/twbs/bootstrap-sass#d-npm--nodejs
 // ::Sass::Script::Value::Number.precision = [8, ::Sass::Script::Value::Number.precision].max
 
-
-
 // Enables for Tribune colors, but is required for everything.
 @import 'base-variables';
 // @import 'bootstrap_custom_variables';
@@ -37,6 +35,10 @@ $notched_video_add_on: 100px;
 // PHOTOS AND ARRANGEMENTS
 $photo_arrangement_gutter: 25px;
 $design_5_large_width: 70%; // Must be a percentage
+
+// GRAPHIC EMBEDS
+$chart_notched_width: 290px;
+$chart-margin:25px;
 
 
 // ---- ADD MORE VARIABLES HERE ---------------------------------------------
@@ -107,7 +109,8 @@ $design_5_large_width: 70%; // Must be a percentage
 	// Keep the overall container at this width;
 	max-width:$container_max_width;
 	margin: 0 auto;
-	padding: 0 $container_padding_h
+	padding: 0 $container_padding_h;
+    width: 100%;
 }
 
 // RESETS
