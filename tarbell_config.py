@@ -199,7 +199,7 @@ def get_drive_api_stuff():
         docfile = service.files().get(fileId=DOC_KEY).execute()
         downloadurl = docfile['exportLinks']['text/html'] # export as 'text/html' instead of 'text/plain' if we want to parse links and styles
         resp, content = service._http.request(downloadurl)
-
+        print ">>>>> WRITING TO OUT_DRIVE.HTML"
         # write to file
         with open('out_drive.html', 'w+') as f:
             text = content.decode("utf-8-sig", errors='ignore') # get rid of BOM
@@ -367,7 +367,7 @@ DEFAULT_CONTEXT.update(**get_extra_context())
 
 @register_hook('preview')
 @register_hook('generate')
-def refresh_archie(site):
+def refresh_archie(site, one=False, two=False):
     """
     This function only exists to call the update() method from within the hooks
     """
