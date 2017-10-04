@@ -1,8 +1,8 @@
 {% extends "_project-base.html" %}
-
+{% from './subtemplates/_macros.html' import add_author with context %}
 
 {# THIS MATTERS MOST. IT CHANGES WHICH STUFF GETS PULLED IN #}
-{% set part = '3d' %}
+{% set part = 'methods' %}
 
 {# VIDEO BLOCKS #}
 {% block show_video %}False{% endblock show_video %}

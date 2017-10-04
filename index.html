@@ -1,24 +1,26 @@
 {% extends "_project-base.html" %}
+{% from './subtemplates/_macros.html' import add_author with context %}
 
 
 {# THIS MATTERS MOST. IT CHANGES WHICH STUFF GETS PULLED IN #}
-{% set part = 'part1' %}
+{% set part = 'disparity' %}
 
 {# VIDEO BLOCKS #}
-{# {% block video_poster %}{{ part }}{% endblock video_poster %}
+{% block show_video %}True{% endblock show_video %}
+{% block video_poster %}{{ part }}{% endblock video_poster %}
 {% block video_file_name %}{{ part }}{% endblock video_file_name %}
-{% block mobile_image_alt_text %}{{ assessments_video_header_caption }}{% endblock mobile_image_alt_text %}
-{% block video_credit %}{{ assessments_video_header_credit }}{% endblock video_credit %}
- #}
+{% block mobile_image_alt_text %}This is the caption{% endblock mobile_image_alt_text %}
+{% block video_credit %}Credit{% endblock video_credit %}
+
 {# TEXT BLOCKS  #}
 {% block headline %}{{ headlines[part ~ "_headline"]['value'] }}{% endblock headline %}
 {% block dek %}{{ headlines[part ~ "_dek"]['value'] }}{% endblock dek %}
 
 {% block byline %}
-    {{ add_author("Ted Gregory", "email@chicagotribune.com") }}, 
-    {{ add_author("Patrick O'Connell", "email@chicagotribune.com") }}, 
-    {{ add_author("Angela Caputo", "email@chicagotribune.com") }} and 
-    {{ add_author("Cecilia Reyes", "email@chicagotribune.com") }}
+    {{ add_author("Ted Gregory", "email@chicagotribune.com")|trim }}, 
+    {{ add_author("Patrick O'Connell", "email@chicagotribune.com")|trim }}, 
+    {{ add_author("Angela Caputo", "email@chicagotribune.com")|trim }} and 
+    {{ add_author("Cecilia Reyes", "email@chicagotribune.com")|trim }}
 {% endblock byline%}
 
 {% block opengraph_story_specific scoped %}
