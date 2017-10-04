@@ -1,15 +1,23 @@
 {# {% extends "_tax-base.html" %} #}
 
-{% from '_project-base.html' import add_chart as add_chart with context%}
-{% from '_project-base.html' import add_photo as add_photo with context %}
-{% from '_project-base.html' import add_p2p_photo as add_p2p_photo with context %}
-{% from '_project-base.html' import ad as ad  with context%}
-{% from '_project-base.html' import add_video as add_video with context %}
-{% from '_project-base.html' import pullquote as pullquote  with context%}
-{% from '_project-base.html' import aside as aside  with context%}
-{% from '_project-base.html' import photo_arr as photo_arr  with context%}
+{% from './subtemplates/_macros.html' import add_chart as add_chart with context%}
+{% from './subtemplates/_macros.html' import add_photo as add_photo with context %}
+{% from './subtemplates/_macros.html' import add_p2p_photo as add_p2p_photo with context %}
+{% from './subtemplates/_macros.html' import ad as ad  with context %}
+{% from './subtemplates/_macros.html' import add_video as add_video with context %}
+{% from './subtemplates/_macros.html' import pullquote as pullquote  with context%}
+{% from './subtemplates/_macros.html' import aside as aside  with context%}
+{% from './subtemplates/_macros.html' import photo_arr as photo_arr  with context%}
+{% from './subtemplates/_macros.html' import breaker as breaker  with context%}
 
-{% if s.close_river|upper == TRUE or s.close_river|upper == "TRUE" %}
+
+{% if s.close_river|upper == "TRUE" or (s.type|upper == "BREAKER" and s.design|upper != "FALSE") %}
+    {% set close_river = True %}
+{% else %}
+    {% set close_river = False %}
+{% endif  %}
+
+{% if close_river %}
     </div>
 {% endif %}
 
@@ -128,9 +136,19 @@
         {{ photo_arr(s.design, s.slug, width, display_caption, display_credit, add_class)}}
     {% endif %}
 
+{% elif type|upper == "BREAKER" %}
+    {% if s.design|upper != "FALSE" %}
+        {% set design = s.design %}
+    {% else %}
+        {% set design = False %}
+    {% endif  %}
+
+    {% if s.content %}
+        {{ breaker(s.content, design) }}
+    {% endif %}
 {% endif %}
 
-{% if s.close_river|upper == TRUE or s.close_river|upper == "TRUE" %}
+{% if close_river %}
     <div class='river--narrow'>
 {% endif %}
 
