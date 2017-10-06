@@ -12,7 +12,7 @@
   <meta name="twitter:site" content="@chicagotribune" />
   <meta name="twitter:creator" content="@kcecireyes" />
   <meta name="twitter:creator" content="@tgregoryreports" />
-  {# <meta name="twitter:creator" content="@OCONNEL?" /> #}
+  <meta name="twitter:creator" content="@pmocwriter" />
   <meta name="twitter:creator" content="@AngelaTCR" />
 
   <meta property="og:url" content="http://{{ ROOT_URL }}/{{ PATH }}" />
@@ -36,35 +36,27 @@
     {{ ad('leaderboard', false) }} 
     #}
     {% block story_header scoped %}
-
     <article>
       {% set part = part %}
-      {% if self.show_video()|upper == "TRUE" %}
-        {% set show_video = True %}
-        {% set bg_class = "" %}
+      
+      {% if show_video_bool %}
         {% set section_class = "" %}
       {% else %}
-        {% set show_video = False %}
         {% set section_class = "story-header--no-video" %}
-        {% set bg_class = 'style="background:url(img/posters/' ~ self.video_poster() ~'.jpg) bottom center no-repeat;background-size:cover;"' %}
       {% endif %}
-
 
       {% include 'subtemplates/' + part + '/_header-supplement.html' ignore missing %}
 
-        <section class='story-header story-header--{{ part }} {{ section_class }}'>
-  
+        <section class='story-header story-header--{{ part }} {{ section_class }}'>  
           <div class='story-header__inner'>
-            <!-- {% block show_video %}{% endblock show_video %} -->
-            
             {% block video_background %}
-              {% if show_video %}
+              {% if show_video_bool %}
                 {% set bg_class = "" %}
               {% else %}
                 {% set bg_class = 'background:url(img/posters/' ~ self.video_poster() ~ '.jpg) bottom center no-repeat;background-size:cover;' %}
               {% endif %}
             <div class='story-header__display' style="{{ bg_class|process_text }}"">
-              {% if show_video %}
+              {% if show_video_bool == True %}
                 <div class='story-header__video'>
                 {% for size in ["large"] %}
                     <video class='header-video header-video--{{ size }}' autoplay muted loop 
@@ -86,9 +78,6 @@
                   </button>
                 </div>
               </div>
-            {% else %}
-              {# <img class='story-header__no-video-poster' src="img/posters/{{ self.video_poster() }}.jpg" alt=""/> #}
-
             {% endif %}
             <div class='story-header__video-texture'></div>
             <p class='story-header__caption'>{% block mobile_image_alt_text %}{% endblock mobile_image_alt_text %} <br />({% block video_credit %}{% endblock video_credit %})</p>
@@ -188,7 +177,6 @@
 {% endblock omniture %}
 
 {% block library_scripts %}
-  {# <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script> #}
   {% include 'subtemplates/_omniture_header_scripts.html' %}
 
   {# For the bootstrap. Can this be removed? #}
