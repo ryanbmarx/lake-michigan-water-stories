@@ -75,7 +75,7 @@ window.addEventListener('load', function() {
             el.setAttribute('src', src);
         });
 
-    const swipers = [].slice.call(ocument.querySelectorAll('.swiper-container'));
+    const swipers = [].slice.call(document.querySelectorAll('.swiper-container'));
     if (swipers.length > 0){
         const slideshows = {};
         swipers.forEach((swiper, index) => {
