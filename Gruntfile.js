@@ -91,10 +91,10 @@ module.exports = function(grunt) {
       // map: true, // inline sourcemaps
 
       // or
-      // map: {
-      //     inline: false, // save all sourcemaps as separate files...
-      //     annotation: 'dist/css/maps/' // ...to the specified directory
-      // },
+      map: {
+          inline: false, // save all sourcemaps as separate files...
+          annotation: 'css/' // ...to the specified directory
+      },
 
       processors: [
         // require('pixrem')(), // add fallbacks for rem units
