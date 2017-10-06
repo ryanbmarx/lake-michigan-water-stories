@@ -1,6 +1,6 @@
 // A wrapper mixin to apply standard body type where needed, since we're abandoning the usual NGUX framework.
 @mixin serif(){
-	@include serif-text(15px, 1.6em);
+	@include serif-text(18px, 1.5em);
 	margin: 0 0 18px 0;
 }
 

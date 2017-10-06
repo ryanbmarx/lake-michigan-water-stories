@@ -1,4 +1,3 @@
-$chart-margin:25px;
 .chart{
 	margin-top:$chart-margin;
 	margin-bottom:$chart-margin;
@@ -15,7 +14,8 @@ $chart-margin:25px;
 
 .image{
 	@include trib-image();
-
+	img{ width: 100%; }
+	
 	figcaption p{
 		@include agate();
 	}
@@ -50,7 +50,7 @@ $chart-margin:25px;
 
 @media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
 	.chart--right{
-		width: 260px; //  this is different than the noteched width b/c some charts are built to this exact width on mobile.
+		width: $chart_notched_width; //  this is different than the noteched width b/c some charts are built to this exact width on mobile.
 		float: right;
 		margin: $chart-margin 0 $chart-margin $chart-margin;
 	}

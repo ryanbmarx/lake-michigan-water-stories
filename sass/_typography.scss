@@ -51,27 +51,74 @@ h3{
 	@include display_type('sans-serif');
 }
 
-.breaker{
+// .breaker{
+// 	position:relative;
+// 	margin: 50px 0 25px 0;
+// 	color: white;
+// 	z-index: 100;
+// 	padding: 40% 10px 0 10px;
+// 	text-transform: uppercase;
+//     letter-spacing: 0.05em;
+//     text-align: right;
+//     text-shadow: 0px 0 8px rgba(black, .9);
+    
+// 	@supports (clip-path: inset(0 0px 0.3em 0px)){
+// 	    // Use clip path if it is supported
+// 	    clip-path: inset(0 0px 0.3em 0px); // totally experiemental. Okay if it fails.
+// 	}
 
+// 	@supports not (clip-path: inset(0 0px 0.3em 0px)){
+// 		// Use transform as a fallback
+// 	    transform: translate(0, -0.15em);
+// 	}
+
+// 	&:after{
+// 		content: "";
+// 		display: block;
+// 		height: 100%;
+// 		width: 100%;
+
+// 		position: absolute;
+// 		top: -5px;
+// 		left: 0;
+// 		z-index: -1;
+// 		transform: translate(0,-0.15em);
+
+// 		background: rgba($trib-blue1, .65) url(../img/water-background-1.jpg) center center no-repeat;
+// 	    background-size: cover;
+//     	background-blend-mode: multiply;
+	
+// 	}
+// }
+
+
+.breaker{
 	position:relative;
 	margin: 50px 0 25px 0;
-	color: white;
+	
 	z-index: 100;
-	padding: 250px 10px 0 10px;
-	text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-align: right;
-    text-shadow: 0px 0 8px rgba(black, .9);
+	padding: 25% 10px 0 10px;
+	
     
-	@supports (clip-path: inset(0 0px 0.3em 0px)){
-	    // Use clip path if it is supported
-	    clip-path: inset(0 0px 0.3em 0px); // totally experiemental. Okay if it fails.
+	&__text{
+		text-transform: uppercase;
+	    letter-spacing: 0.05em;
+	    text-align: center;
+	    text-shadow: 0px 0 8px rgba(black, .9);		
+	    color: white;
+	    font-size: 50px;
 	}
 
-	@supports not (clip-path: inset(0 0px 0.3em 0px)){
-		// Use transform as a fallback
-	    transform: translate(0, -0.15em);
-	}
+
+	// @supports (clip-path: inset(0 0px 0.3em 0px)){
+	//     // Use clip path if it is supported
+	//     clip-path: inset(0 0px 14px 0px); // totally experiemental. Okay if it fails.
+	// }
+
+	// @supports not (clip-path: inset(0 0px 0.3em 0px)){
+	// 	// Use transform as a fallback
+	//     transform: translate(0, -14px);
+	// }
 
 	&:after{
 		content: "";
@@ -83,14 +130,25 @@ h3{
 		top: -5px;
 		left: 0;
 		z-index: -1;
-		transform: translate(0,-0.15em);
+		// transform: translate(0,-0.15em);
 
-		background: rgba($trib-blue1, .65) url(https://petapixel.com/assets/uploads/2014/09/xOxiA6m.gif) center center no-repeat;
+		background-image: url(../img/water-background-2.jpg) center center no-repeat;
 	    background-size: cover;
     	background-blend-mode: multiply;
-	
-	}
+    	// opacity: .5;
+	}	
 }
+
+@for $i from 1 through 7{
+	.breaker--#{$i}{ background:url(../img/breaker-backgrounds/water-background-#{$i}.jpg) center center no-repeat; }	
+}
+	
+	// &--2{ background-image:url(../img/water-background-2.jpg) center center no-repeat; }
+	// &--3{ background-image:url(../img/water-background-3.jpg) center center no-repeat; }
+	// &--4{ background-image:url(../img/water-background-4.jpg) center center no-repeat; }
+	// &--5{ background-image:url(../img/water-background-5.jpg) center center no-repeat; }
+	// &--6{ background-image:url(../img/water-background-6.jpg) center center no-repeat; }
+
 
 
 @media all and (min-width: $tablet-min-width){
@@ -131,7 +189,23 @@ h3{
 		font-size:30px;
 	}
 
-	.breaker{
-		font-size:40px;
-	}
+// .breaker{
+// 	font-size:40px;
+
+// 	@supports (clip-path: inset(0 0px 0.3em 0px)){
+// 	    // Use clip path if it is supported
+// 	    clip-path: inset(0 0px 0.3em 0px); // totally experiemental. Okay if it fails.
+// 	}
+
+// 	@supports not (clip-path: inset(0 0px 0.3em 0px)){
+// 		// Use transform as a fallback
+// 	    transform: translate(0, -0.15em);
+// 	}
+
+// 	&:after{
+// 		background: rgba($trib-blue1, .65) url(https://petapixel.com/assets/uploads/2014/09/xOxiA6m.gif) center center no-repeat;	
+// 	    background-size: cover;
+// 	}
+// }
+
 }
