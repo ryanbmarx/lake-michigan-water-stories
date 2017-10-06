@@ -19,6 +19,7 @@ $nav_padding_h: 25px;
 // STORY HEADER CONFIG
 $story_header_display_max_height: 650px;
 $story_header_no_video_height: 400px;
+$story_header_project-title-max-width: 450px;
 
 // CREDIT CONFIG
 $credits_item_border-radius: 5px;
@@ -112,6 +113,7 @@ $chart-margin:25px;
 	margin: 0 auto;
 	padding: 0 $container_padding_h;
     width: 100%;
+    box-sizing:border-box;
 }
 
 // RESETS

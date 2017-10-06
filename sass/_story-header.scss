@@ -20,7 +20,7 @@
 	&__project-title{
 		z-index: 1000;
 		width: 100%;
-		max-width:370px;
+	    max-width: $story_header_project-title-max-width;
 		text-align: center;
 		margin: 20px auto;
 		padding: 5px;
