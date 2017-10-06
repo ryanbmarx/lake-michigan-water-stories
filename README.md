@@ -40,7 +40,7 @@ Part 3: stories.houlihan
 ...
 etc.
 
-The archieml is the blueprint for each story, and is divided into chunks. Each chunk is a content type (text, refer, photo, graphic, etc.) and is rendered in order using jinja macros (defined on `_tax-base.html` for each type. The template logic for this resides in the subtemplate `_story-loop` which reads the imported stories and outputs the content.
+The archieml is the blueprint for each story, and is divided into chunks. Each chunk is a content type (text, refer, photo, graphic, etc.) and is rendered in order using jinja macros (defined on `_project-base.html` for each type. The template logic for this resides in the subtemplate `_story-loop` which reads the imported stories and outputs the content.
 
 For our purposes here, the variable `s` will be a chunk of content.
 
@@ -209,7 +209,6 @@ Next, add the story text to the ArchieML. You can follow the patterns demonstrat
 
 When you open up the template, you'll see a line that says `{% set part = "XXX" %}`. Set it to your chosen `<part>`. You'll also need to, for each new story, do these things:
     
-    - Put properly-named video files and poster image into the img folder for the scrolling header.
     - Create, in the spreadsheet, entries for the poster image alt text and scrolling video caption/credits.
     - Create entries in the spreadsheet for headline, dek, og_descriptions (facebook, etc.), seo description, tweets and the desired social media thumbnail for the project (paste a tribimg.com url for the photo into the spreadsheet.) It would be good to look at the collection of text for previous stories to see what is needed.
     - Each of these items has corresponding entries on the story template. Be sure that the part name matches in each variable used.
