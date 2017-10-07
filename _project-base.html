@@ -58,15 +58,13 @@
             <div class='story-header__display' style="{{ bg_class|process_text }}"">
               {% if show_video_bool == True %}
                 <div class='story-header__video'>
-                {% for size in ["large"] %}
-                    <video class='header-video header-video--{{ size }}' autoplay muted loop 
-                    poster='img/posters/{% block video_poster %}{% endblock video_poster %}--{{ size }}.jpg'
+                    <video class='header-video header-video' autoplay muted loop 
+                    poster='img/posters/{% block video_poster %}{% endblock video_poster %}.jpg'
                     style='width:100%;'>
                     {# There are several different sources. Each day should use the same filename #}
-                    <source src="http://{{ ROOT_URL }}/img/videos/{% block video_file_name %}{% endblock video_file_name %}--{{ size }}.webm" type="video/webm">
-                    <source src="http://{{ ROOT_URL }}/img/videos/{{ self.video_file_name() }}--{{ size }}.mp4" type="video/mp4">
+                    <source src="http://{{ ROOT_URL }}/img/videos/{% block video_file_name %}{% endblock video_file_name %}.webm" type="video/webm">
+                    <source src="http://{{ ROOT_URL }}/img/videos/{{ self.video_file_name() }}.mp4" type="video/mp4">
                     </video>
-                {% endfor %}
                   <div class='story-header__video-controls video-controls'>
                   <button id='pause' class='video-control video-control--pause video-control--visible'>
                     <i class="fa fa-pause-circle" aria-hidden="true"></i>
