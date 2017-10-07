@@ -117,7 +117,6 @@
 		z-index: 1000;
 		text-transform:none;
 	}
-	// &__scrolling-icon{ display:none; }
 
 	.social-menu{
 		// This will stick the social buttons across the whitespace from the byline on mobile.
@@ -126,7 +125,6 @@
 
 
 	.byline{
-		margin-bottom:25px;
 		z-index:1000;
 	}
 	
@@ -154,42 +152,6 @@
 
 }
 
-
-// // These tweaks remove the video header from the sidebars and modify the design
-// .story-header {
-// 	&--methods, &--assessor_response, &--appeals_methods{
-// 		padding: 40px 25px 0 25px;
-// 		background-color: rgba($trib-blue2, .15);
-// 		background-image: url(../img/grid_background.svg);
-// 		background-size: 8px;
-// 		margin-bottom: 25px;
-
-// 		.story-header__subheadline{
-// 			font-size: 36px;
-// 			line-height:1.3em;
-// 			text-transform: none;
-// 			@include text_stroke(black, black, 2px, .07, 5px);
-
-// 		}
-// 		.story-header__headline{ display:none; }
-
-// 		.byline{
-// 			padding-top: 0;
-// 			border-top: none;
-// 			text-align: center;
-// 			margin-top: 10px;
-// 			&-name{
-// 				color:black;
-// 			}
-// 		}
-
-
-// 		.byline-publish-date{
-// 			color:black;
-// 		}
-// 	}
-// }
-
 @media all and (min-width: $tablet-min-width){
 
 	.story-header{
@@ -209,14 +171,6 @@
 
 		&__project-title br{
 			display:none;
-		}
-	}
-
-	.story-header {
-		&--methods, &--assessor_response, &--appeals_methods {
-			.story-header__headline {
-				font-size: 45px;
-			}
 		}
 	}
 }
@@ -331,20 +285,5 @@
 			height: $story_header_no_video_height;
 		}
 	}
-
-	// These tweaks remove the video header from the sidebars and modify the design
-	// .story-header {
-	// 	&--methods, &--assessor_response, &--appeals_methods {
-	// 		.story-header__subheadline {
-	// 			font-size: 55px;
-	// 			// max-width: 500px;
-	// 			margin: 0 auto 10px auto;
-	// 		}
-
-	// 		// .story-header__subheadline {
-	// 		// 	font-size: 23px;
-	// 		// }
-	// 	}
-	// }
 }
 
