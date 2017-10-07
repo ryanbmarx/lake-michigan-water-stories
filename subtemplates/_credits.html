@@ -1,14 +1,14 @@
 {% macro add_people(role) %}
 	{% set people = "XX" %}
 	{%- for person in credits|sort(False, attribute="name_last") if person[role] == 1 -%}
-		{% if person.email %}
+		{%- if person.email %}
 			<a href="mailto:{{ person.email }}">
-		{% endif %}
+		{%- endif %}
 			{{ person.name_first }} {{ person.name_last }}
-		{% if person.email %}
+		{%- if person.email %}
 			</a>
-		{% endif %}
-			{% if not loop.last %}, {% endif %}
+		{%- endif %}
+		{%- if not loop.last %}, {% endif %}
 	{%- endfor -%}
 {% endmacro %}
 
@@ -48,7 +48,7 @@
 	] %}
 		{%- for role in roles -%}
 			<dt>{{ role.label|upper }}</dt>	
-			<dd>{{ add_people(role.id|upper) }}</dd>
+			<dd>{{ add_people(role.id|upper)|clean_up_commas|process_text }}</dd>
 		{%- endfor -%}
 		</dl>
 	</div>

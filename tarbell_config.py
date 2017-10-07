@@ -19,6 +19,11 @@ from tarbell.utils import puts
 from tarbell.oauth import get_drive_api
 from tarbell.hooks import register_hook
 
+# For regex
+import re
+
+# to minify html
+import htmlmin
 
 from collections import OrderedDict
 from jinja2 import Markup
@@ -69,6 +74,32 @@ def get_photo_limit(design):
     # If the user has selected a design that's not yet defined, return our "unlimited"
     return 100
 
+@blueprint.app_template_filter('clean_up_commas')
+def clean_up_commas(list_str):
+    """
+    In a few places, I use a for loop to make a list of items, and 
+    there is an erroneous space before each comma. This cleans that up.
+    """
+    # # This removes all instances of 2 or more whitespaces
+    # cleaned_list = re.sub(r"\s\s+", "", list_str)
+
+    # # This removes all instances of linebreaks
+    # cleaned_list = re.sub(r"\n", "", list_str)
+
+    # # This removes all instances of tabs
+    # cleaned_list = re.sub(r"\t", "", list_str)
+
+    # # This restores the space after the comma
+    # cleaned_list = cleaned_list.replace(",", ", ")
+
+    # minify the list and fix the space around the anchor tags and commas
+    cleaned_list = htmlmin.minify(list_str)
+    cleaned_list = cleaned_list.replace("> ", ">").replace(" <", "<").replace(',',', ')
+
+    print (list_str, ">>>>>>>>>>>> ", cleaned_list)
+
+    return cleaned_list
+    
 
 @blueprint.app_template_filter('xldate_to_datetime')
 def xldate_to_datetime(xldate):
