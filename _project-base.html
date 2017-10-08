@@ -16,7 +16,7 @@
   <meta name="twitter:creator" content="@AngelaTCR" />
 
   <meta property="og:url" content="http://{{ ROOT_URL }}/{{ PATH }}" />
-  <meta name="keywords" content="{{ keywords }}">
+  <meta name="keywords" content="{% block keywords %}{{ keywords }}{% endblock %}">
   {% block opengraph_story_specific scoped %}
 
     <meta name="twitter:title" content="{{ title }}" />

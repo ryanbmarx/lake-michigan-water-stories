@@ -46,10 +46,5 @@
     {% endfor -%}
 {% endblock %}
 
-{# {% block library_scripts %}
-{% endblock library_scripts %}
- #}
-{# {% block scripts %}
-    {{ super() }}
-    <script src="http://{{ ROOT_URL }}/js/day1header.min.js"></script>
-{% endblock %} #}
+{# META KEYWORDS #}
+{% block keywords %}{{ headlines[part ~ '_seo_keywords']['value'] }}{% endblock %}
