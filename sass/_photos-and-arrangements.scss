@@ -18,17 +18,11 @@ $design_5_large_width: 60%;
 		}
 	}
 
-	&--1{
+	&--1, &--2, &--5{
 		display:block;
 
 		.image{
 			@include distribute_across_columns(1, $photo_arrangement_gutter);
-		}
-	}
-
-	&--2, &--5{
-		.image{
-			@include distribute_across_columns(2, $photo_arrangement_gutter);
 		}
 	}
 
@@ -57,12 +51,21 @@ $design_5_large_width: 60%;
 }
 
 @media all and (min-width: $tablet-min-width){
-	.photo-arr.photo-arr--5 {
-		.image:first-child{
-			width: calc(#{$design_5_large_width} - #{$photo_arrangement_gutter});
+	.photo-arr.photo-arr{
+		&--2{
+			display:flex;
+			.image{
+				@include distribute_across_columns(2, $photo_arrangement_gutter);
+			}
 		}
-		.image:last-child{
-			width: #{100% - $design_5_large_width};
+		&--5 {
+			display:flex;
+			.image:first-child{
+				width: calc(#{$design_5_large_width} - #{$photo_arrangement_gutter});
+			}
+			.image:last-child{
+				width: #{100% - $design_5_large_width};
+			}
 		}
 	}
 }
