@@ -24,17 +24,17 @@ if (document.getElementById('comments-button')){
     }, false);
 }
 
-// function pauseVideo(video){
-//     pause.classList.toggle('video-control--visible');
-//     play.classList.toggle('video-control--visible');
-//     video.pause();
-// }
+function pauseVideo(video){
+    pause.classList.toggle('video-control--visible');
+    play.classList.toggle('video-control--visible');
+    video.pause();
+}
 
-// function playVideo(video){
-//     pause.classList.toggle('video-control--visible');
-//     play.classList.toggle('video-control--visible');
-//     video.play();
-// }
+function playVideo(video){
+    pause.classList.toggle('video-control--visible');
+    play.classList.toggle('video-control--visible');
+    video.play();
+}
 
 // Listen for the loaded event 
 window.addEventListener('load', function() {  
@@ -112,29 +112,29 @@ window.addEventListener('load', function() {
 
 }
 
-    // if (!isMobile() && document.createElement('video').canPlayType('video/mp4') != "" && document.querySelectorAll('.header-video').length > 0){
-    //     // Prep the pause button, if video is supported and we are not on mobile and there is a video header on the page.
-    //     const   play = document.getElementById('play'),
-    //             pause = document.getElementById('pause'),
-    //             video = window.innerWidth > 1100 ? document.querySelector('.header-video--large') : document.querySelector('.header-video--small');
+    if (!isMobile() && document.createElement('video').canPlayType('video/mp4') != "" && document.querySelectorAll('.header-video').length > 0){
+        // Prep the pause button, if video is supported and we are not on mobile and there is a video header on the page.
+        const   play = document.getElementById('play'),
+                pause = document.getElementById('pause'),
+                video = document.querySelector('.header-video');
         
-    //     // // make the pause button appear
-    //     pause.classList.add('video-control--visible');
+        // // make the pause button appear
+        pause.classList.add('video-control--visible');
     
-    //     const controlButtons = document.querySelectorAll('.video-control');
-    //     for (var buttonCounter= 0; buttonCounter < controlButtons.length; buttonCounter++){
-    //         let button = controlButtons[buttonCounter];
-    //         button.addEventListener('click', function(e){    
-    //             if (e.target.id == "play"){
-    //                 playVideo(video)
-    //             } else {
-    //                 pauseVideo(video)
-    //             }
-    //         })
-    //     }
-    //     // Also, let's kill the video after 30 seconds.
-    //     var videoKill = setTimeout(function(){
-    //         pauseVideo(video)
-    //     }, 30000);
-    // }
+        const controlButtons = document.querySelectorAll('.video-control');
+        for (var buttonCounter= 0; buttonCounter < controlButtons.length; buttonCounter++){
+            let button = controlButtons[buttonCounter];
+            button.addEventListener('click', function(e){    
+                if (e.target.id == "play"){
+                    playVideo(video)
+                } else {
+                    pauseVideo(video)
+                }
+            })
+        }
+        // Also, let's kill the video after 30 seconds.
+        var videoKill = setTimeout(function(){
+            pauseVideo(video)
+        }, 30000);
+    }
 }, false);
