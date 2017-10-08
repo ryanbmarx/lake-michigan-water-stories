@@ -1,5 +1,3 @@
-$column_width: 280px;
-$credit_padding: 15px;
 
 @keyframes border_blink {
     0% { 
@@ -29,7 +27,7 @@ $credit_padding: 15px;
 	justify-content:center;
 	
 	
-	background: $trib-blue2 url(../img/water-texture-1.jpg) center no-repeat ;
+	background: $trib-blue2 url(../img/water-texture-1a.jpg) center no-repeat ;
 	background-blend-mode: multiply;
 	background-size: cover
 }
@@ -44,11 +42,13 @@ $credit_padding: 15px;
 }
 
 .credits__column{
-	width:$column_width;
+	width:$credits_column_width;
+	box-sizing:border-box;
 
 	&--people{
 		background: rgba(white,.2);
 		border-radius: $credits_item_border-radius;
+		margin-top: 25px;
 	}
 
 }
@@ -56,9 +56,9 @@ $credit_padding: 15px;
 
 .credits__people{
 
-	margin:30px 0 0 0; // This margin aligns it with the links padding spelled out below
-	padding:30px 0 0 0;
-	border-top:1px solid rgba(white, .5);
+	// margin:30px 0 0 0; // This margin aligns it with the links padding spelled out below
+	// padding:30px 0 0 0;
+	// border-top:1px solid rgba(white, .5);
 	width:100%;
 	text-align:center;
 	
@@ -99,7 +99,7 @@ $credit_padding: 15px;
 	}
 
 	&__prefix{
-		@include agate();
+		@include sans-serif-text(18px, 1.3em, bold);
 		text-transform: uppercase;
 		font-weight:bold;
 		display:block;
@@ -113,7 +113,7 @@ $credit_padding: 15px;
 	}
 }
 
-@media all and (min-width: #{($column_width + 20) * 2)}){
+@media all and (min-width: #{($credits_column_width * 2) + 25}){
 	// When the window width is greater than the space needed for two columns and 20px gutters on container
 	.credits__people{
 		margin:20px 0 0 0; // This margin aligns it with the links padding spelled out below
@@ -123,11 +123,13 @@ $credit_padding: 15px;
 
 
 	.credits__column{
+
 		&--links { margin-right: 25px; }
 		
 		&--people{
-			width:$column_width - (2 * $credit_padding) - 2px;
-			padding: $credit_padding;
+			margin-top: 0;
+			width:$credits_column_width;
+			padding: $credits_padding;
 			// border: 1px solid $trib-blue2;
 		}
 
