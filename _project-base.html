@@ -78,7 +78,7 @@
               </div>
             {% endif %}
             <div class='story-header__video-texture'></div>
-            <p class='story-header__caption'>{% block mobile_image_alt_text %}{% endblock mobile_image_alt_text %} <br />({% block video_credit %}{% endblock video_credit %})</p>
+            <p class='story-header__caption'>{% block mobile_image_alt_text %}{% endblock mobile_image_alt_text %} {% block video_credit %}{% endblock video_credit %}</p>
             {# <i class="fa fa-arrow-circle-down fa-2x story-header__scrolling-icon" aria-hidden="true"></i> #}
             {% endblock video_background %}
             <div class='story-header__project-title'>
