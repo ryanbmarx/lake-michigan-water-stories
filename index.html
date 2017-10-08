@@ -17,10 +17,10 @@
 {% block dek %}{{ headlines[part ~ "_dek"]['value'] }}{% endblock dek %}
 
 {% block byline %}
-    {{ add_author("Ted Gregory", "email@chicagotribune.com")|trim }}, 
-    {{ add_author("Patrick O'Connell", "email@chicagotribune.com")|trim }}, 
-    {{ add_author("Angela Caputo", "email@chicagotribune.com")|trim }} and 
-    {{ add_author("Cecilia Reyes", "email@chicagotribune.com")|trim }}
+    {{ add_author("Ted Gregory", "tgregory@chicagotribune.com")|trim }}, 
+    {{ add_author("Patrick O'Connell", "poconnell@chicagotribune.com")|trim }}, 
+    {{ add_author("Angela Caputo", False)|trim }} and 
+    {{ add_author("Cecilia Reyes", "creyes@chicagotribune.com") }}
 {% endblock byline%}
 
 {% block opengraph_story_specific scoped %}
