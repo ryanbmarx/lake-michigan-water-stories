@@ -113,15 +113,21 @@ body{
 
 }
 
-#toggle{
-	display:none;
-
-	&:checked ~ .nav-buttons-wrapper{
-    	left:0;
-    	opacity:1;
-    	transition:opacity 400ms ease, left 400ms ease;		
-	}
+.nav-buttons-wrapper--visible{
+	left:0;
+	opacity:1;
+	transition:opacity 400ms ease, left 400ms ease;		
 }
+
+// #toggle{
+// 	display:none;
+
+// 	&:checked ~ .nav-buttons-wrapper, .nav-buttons-wrapper--visible{
+//     	left:0;
+//     	opacity:1;
+//     	transition:opacity 400ms ease, left 400ms ease;		
+// 	}
+// }
 
 .nav-buttons{
 	// These are the actual menu items

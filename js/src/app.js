@@ -14,17 +14,11 @@ function isMobile(){
     return window.innerWidth < 850 ? true : false;
 }
 
-// This is the nav window checkbox toggle fallback
-
-const   navMenuToggle = document.querySelector("#mobile-nav-toggle"),
-        navMenuCheckbox = document.querySelector("#toggle");
+// This is the nav window story toggle 
+const   navMenuToggle = document.querySelector("#mobile-nav-toggle");
 
 navMenuToggle.addEventListener('click', function(e){
-    if (navMenuCheckbox.checked){
-        navMenuCheckbox.checked = false;
-    } else {
-        navMenuCheckbox.checked = true;
-    }
+    document.querySelector('.nav-buttons-wrapper').classList.toggle('nav-buttons-wrapper--visible')
 });
 
 
