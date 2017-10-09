@@ -14,6 +14,19 @@ function isMobile(){
     return window.innerWidth < 850 ? true : false;
 }
 
+// This is the nav window checkbox toggle fallback
+
+const   navMenuToggle = document.querySelector("#mobile-nav-toggle"),
+        navMenuCheckbox = document.querySelector("#toggle");
+
+navMenuToggle.addEventListener('click', function(e){
+    if (navMenuCheckbox.checked){
+        navMenuCheckbox.checked = false;
+    } else {
+        navMenuCheckbox.checked = true;
+    }
+});
+
 
 if (document.getElementById('comments-button')){
     // If there is a comments button, then init comments on click. Otherwise, skip it. the sidebars 
