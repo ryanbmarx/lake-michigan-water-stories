@@ -26,7 +26,6 @@
 	flex-wrap:wrap;
 	justify-content:center;
 	
-	
 	background: $trib-blue2 url(../img/water-texture-1a.jpg) center no-repeat ;
 	background-blend-mode: multiply;
 	background-size: cover
@@ -49,6 +48,7 @@
 		background: rgba(white,.2);
 		border-radius: $credits_item_border-radius;
 		margin-top: 25px;
+		padding: $credits_padding;
 	}
 
 }
@@ -129,7 +129,6 @@
 		&--people{
 			margin-top: 0;
 			width:$credits_column_width;
-			padding: $credits_padding;
 			// border: 1px solid $trib-blue2;
 		}
 
