@@ -77,7 +77,7 @@ window.addEventListener('load', function() {
     inView('.image--lazy img')
         .on('enter', el => {
 
-            const src = el.dataset.fullResSrc;
+            let src = isMobile ? el.dataset.fullResSrc.replace('/1200', "/850") : el.dataset.fullResSrc ;
             console.log('adding', src);
             el.setAttribute('src', src);
         });
