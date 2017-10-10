@@ -9,7 +9,6 @@
 		// padding: 50px;
 		margin: 0 0 25px 0;
 		// height: calc(100vh - #{$nav_height + ($nav_padding_v * 2)});
-		max-height: $story_header_display_max_height;
 		display: flex;
 		justify-content: center;
 		align-items:center;
@@ -61,6 +60,7 @@
 	    padding: 65px 25px;
 	    box-sizing: border-box;
 	    width:100%;
+	    height: 100vh;
 	}
 
 
@@ -214,6 +214,10 @@
 			overflow:hidden;
 			margin-bottom:25px;
 			padding: 25px;
+		}
+		
+		&__inner{
+			max-height: $story_header_display_max_height;
 		}
 
 		&__caption{

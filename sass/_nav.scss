@@ -2,9 +2,9 @@ $space_between_mobile_buttons: 15px;
 $logo_width: 200px;
 
 // Give the navbar space to exist without overlapping anything at the top of the page.
-body{
-	padding-top:$nav_height + $nav_padding_v * 2;
-}
+// body{
+// 	padding-top:$nav_height + $nav_padding_v * 2;
+// }
 
 .navbar{
 	background: rgba($trib-blue2, .92);
