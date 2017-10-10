@@ -1,5 +1,5 @@
 .advert{
-	margin:10px 0;
+	margin:10px #{0 - $container_padding_h};
 	&[data-ad-type="leaderboard"]{
 		
 	}
@@ -17,6 +17,7 @@
 
 
 @media all and (min-width:769px){
+	// This is the breakpoint when the mini banners become cubes.
 	.advert{
 		&[data-ad-type="leaderboard"]{
 			// margin:15px 0;
