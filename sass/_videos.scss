@@ -34,7 +34,7 @@
 	}
 }
 
-@media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
+@media all and (min-width: #{$narrow-river-max-width-desktop + $notched_video_add_on}){
 
 	.video.video--right{
 		width: $notched_width + $notched_video_add_on;
