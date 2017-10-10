@@ -48,6 +48,18 @@
 }
 
 
+.chart--system-map{
+	// HACK ALERT!!!!!
+	// iphones handle iframe widths funny, it appears. This hack will force the iframe to fit inside its container.
+	// It has something to do with % widths. 
+	// Not my fault: https://stackoverflow.com/questions/23865899/how-to-set-the-width-of-an-iframe-in-ios6
+
+	iframe{
+		width: 1px;
+		min-width: 100%;
+	}
+}
+
 @media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
 	.chart--right{
 		width: $chart_notched_width; //  this is different than the noteched width b/c some charts are built to this exact width on mobile.
