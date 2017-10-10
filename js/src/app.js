@@ -106,8 +106,6 @@ window.addEventListener('load', function() {
                 // watchSlidesVisibility:true
             }); 
 
-            
-
             slideshows[index].querySelector('.swiper-button-next').addEventListener('click', e => {
                 slideshows[index].slideNext();
             });
