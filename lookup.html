@@ -16,7 +16,8 @@
 {% block dek %}{{ headlines[part ~ "_dek"]['value'] }}{% endblock dek %}
 
 {% block byline %}
-    {{ add_author("Cecilia Reyes", "email@chicagotribune.com") }}
+    {{ add_author("Cecilia Reyes", "creyes@chicagotribune.com") }}
+    {{ add_author("Chad Yoder", "cyoder@chicagotribune.com") }}
 {% endblock byline%}
 {% block opengraph_story_specific scoped %}
     <meta property="og:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
