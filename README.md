@@ -20,6 +20,15 @@ HOW IS IT CONSTRUCTED
 
 This project uses the old News Apps bootstrap blueprint, but most of that has been excised. There is very little bootstrap left. The blueprint's `_base.html` is extended by this project's `_project-base.html`. Here lives all the stuff common to all stories including the universal `app.js` which governs lazy loading of graphics and photos using the npm package [In-View](https://www.npmjs.com/package/in-view).
 
+THINGS YOU NEED TO UPDATE
+-------------------------
+
+- Subscription refer needs a unique tracking url. In the past, Kurt Gessler has asked Kimberly Bastin (Senior Manager, Digital Marketing) for a "subscription tracking code."
+- Omniture (tk)
+- Chartbeat (tk)
+
+
+
 
 THE STORIES AND THEIR ASSETS
 ----------------------------
