@@ -362,7 +362,7 @@ S3_BUCKETS = {
     #     "mytarget": "mys3url.bucket.url/some/path"
     # then use tarbell publish mytarget to publish to it
     
-    "production": "graphics.chicagotribune.com/lake-michigan-water-rates-disparity",
+    "production": "graphics.chicagotribune.com/lake-michigan-water",
     "staging": "apps.beta.tribapps.com/lake-michigan-water-stories",
 }
 
@@ -378,7 +378,6 @@ DEFAULT_CONTEXT = {
     'title': 'Lake Michigan Water Stories'
 }
 
-# DEFAULT_CONTEXT.update(**get_extra_context())
 get_drive_api_stuff()
 DEFAULT_CONTEXT.update(**get_extra_context())
 
