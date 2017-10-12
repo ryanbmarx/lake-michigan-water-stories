@@ -25,8 +25,8 @@ THINGS YOU NEED TO UPDATE
 
 - Subscription refer needs a unique tracking url. In the past, Kurt Gessler has asked Kimberly Bastin (Senior Manager, Digital Marketing) for a "subscription tracking code."
 - Omniture (tk)
-- Chartbeat (tk)
-
+- **Chartbeat:** The docs are [here](http://support.chartbeat.com/docs/) and Tronc's user ID is 25745. This is per Eli Schiff of the Tronc Data Team.
+- Page comments: Solid opinion comments should just work with the project title and part variable combining to be a unique phrase for each story. Check with [Andrew Baltazar](mailto:abaltazar@tronc.com) to confirm the project production urls are whitelisted.
 
 
 

@@ -153,11 +153,34 @@
 
 {% block scripts %}
     <script src="http://{{ ROOT_URL }}/js/app.min.js"></script>
-    {# <script>brightcove.createExperiences();</script> #}
 {% endblock scripts %}
 
 {% block chartbeat %}
-    {% include 'subtemplates/_chartbeat.html' %}
+    <script type='text/javascript'>
+    var _sf_async_config = _sf_async_config || {};
+    /** CONFIGURATION START **/
+    _sf_async_config.uid = 25745 /* TRONC USER ID */
+    _sf_async_config.domain = 'chicagotribune.com'; /* Should this just be chicagotribune.com */
+    _sf_async_config.useCanonical = true;
+    _sf_async_config.sections = 'News'; //CHANGE THIS
+    _sf_async_config.authors = 'Tribune Staff'; //CHANGE THIS
+    /** CONFIGURATION END **/
+    (function() {
+        function loadChartbeat() {
+            var e = document.createElement('script');
+            e.setAttribute('language', 'javascript');
+            e.setAttribute('type', 'text/javascript');
+            e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+            document.body.appendChild(e);
+        }
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+            loadChartbeat : function() {
+                oldonload();
+                loadChartbeat();
+            };
+    })();
+  </script>
 {% endblock %}
 
 {% block omniture_scripts %}
