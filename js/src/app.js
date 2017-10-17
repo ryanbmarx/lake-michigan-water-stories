@@ -1,6 +1,6 @@
 // import "babel-polyfill";
 const inView = require('in-view');
-const pym = require('pym.js');
+const pym = require('./pym.trib.js');
 const Swiper = require('swiper.min.js');
 // const boot = require('bootstrap.js');
 
