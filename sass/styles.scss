@@ -93,6 +93,7 @@ $chart-margin:25px;
 @import 'swiper';
 @import 'photos-and-arrangements';
 @import 'refers';
+@import 'met-promo';
 
 // ---- WRITE MORE PROJECT STYLES HERE ---------------------------------------------
 
@@ -186,15 +187,7 @@ body{ margin: 0; padding:0; }
 	transition: max-height 400ms ease;
 }
 
-.met-promo{
-	.met-promo-content{
-		p{
-			@include sans-serif();
-			color:white;
-			width:100%;
-		}
-	}
-}
+
 
 @media all and (min-width: #{$narrow-river-max-width-desktop + 60px}){
 	// .subscribe.subscribe--right{
