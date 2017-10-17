@@ -1,0 +1,9 @@
+.met-promo{
+	.met-promo-content{
+		p{
+			@include sans-serif();
+			color:white;
+			width:100%;
+		}
+	}
+}
