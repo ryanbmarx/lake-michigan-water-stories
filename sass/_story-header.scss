@@ -1,14 +1,16 @@
 .story-header{
 	
 	position:relative;
+
+	// Not sure if anyone will expand their window like that, 
+	// but it keeps things from totally breaking down if they do
+	max-width: 1600px; 
+	margin: 0 auto;
 	
 	&__inner{
 		@extend %border-box;
-		// background: url(../img/water-background-1.jpg) bottom center no-repeat;
 		background-size: cover;
-		// padding: 50px;
-		margin: 0 0 25px 0;
-		// height: calc(100vh - #{$nav_height + ($nav_padding_v * 2)});
+		margin: 0 auto 25px auto;
 		display: flex;
 		justify-content: center;
 		align-items:center;
@@ -38,13 +40,6 @@
 
 		}	
 	}
-
-	// &__title{
-	// 	font-family:"Arial", sans-serif;
-	// 	text-transform: uppercase;
-	// 	font-size:16px;
-	// 	color:$trib-blue4;
-	// }
 
 	&__display{
 		background-size:cover;	
@@ -97,7 +92,7 @@
 		width: 100%;
 		height: 100%;
 		background: black url(../img/video-texture.svg);
-		background-size: 3px;
+		background-size: 5px;
 		opacity: .25;
 	}
 
@@ -210,13 +205,9 @@
 
 		&__display{
 			// NOTE: Since we're dealing with video, it would seem easier to have a known height, sted the variable VH height.
-			height: 500px;
 			overflow:hidden;
 			margin-bottom:25px;
 			padding: 25px;
-		}
-		
-		&__inner{
 			max-height: $story_header_display_max_height;
 		}
 
@@ -240,16 +231,18 @@
 		    position: absolute;
 		    bottom: 0;
 		    left: 0;
-		    width: 100%;
+		    max-width: 100%;
 		    height: 100%;
 		    align-items: flex-end;
 		    justify-content: flex-start;
+
+		    video { height: 100%; }
 		}
 
 		&__video-controls{
 		// display:block;
 		position: absolute;
-		top: 0;
+		top: $nav_height + (2 * $nav_padding_v);
 		right: 0;
 		display:block;
 		}
@@ -292,3 +285,7 @@
 	}
 }
 
+@media all and (min-width: 1200px){
+	.story-header__display { max-height: 725px; }
+	.story-header__headline { font-size: 100px; }
+}
