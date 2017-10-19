@@ -84,16 +84,17 @@ window.addEventListener('load', function() {
 
     const swipers = [].slice.call(document.querySelectorAll('.swiper-container'));
     if (swipers.length > 0){
-        const slideshows = {};
+        let slideshows={};
         swipers.forEach((swiper, index) => {
+            swiper.setAttribute('id', `swiper${index}`);
             //if there are swipers, iterate over the containers array and init them.
-            slideshows[index] = new Swiper('.swiper-container', {
+            slideshows[`swiper${index}`] = new Swiper('.swiper-container', {
                 speed: 400,
                 slidesPerView: 1,
                 centeredSlides: true,
-                pagination: '.swiper-pagination',
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
+                // pagination: `#swiper${index} .swiper-pagination`,
+                nextButton: `#swiper${index} .swiper-button-next`,
+                prevButton: `#swiper${index} .swiper-button-prev`,
                 // scrollBar: '.swiper-scrollbar',
                 paginationClickable: true,
                 spaceBetween: 30,
@@ -106,16 +107,15 @@ window.addEventListener('load', function() {
                 // watchSlidesVisibility:true
             }); 
 
-            console.log(slideshows, index)
-            swiper.querySelector('.swiper-button-next').addEventListener('click', e => {
-                console.log('click next')
-                slideshows[index].slideNext();
+            
+
+            document.querySelector(`.swiper-button-next`).addEventListener('click', e => {
+                slideshows[`swiper${index}`].slideNext();
             });
 
-            swiper.querySelector('.swiper-button-prev').addEventListener('click', e => {
-                console.log('click prev')
-                slideshows[index].slidePrev();
-            });            
+            document.querySelector(`.swiper-button-prev`).addEventListener('click', e => {
+                slideshows[`swiper${index}`].slidePrev();
+            });         
         })
 
 }
