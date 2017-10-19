@@ -7,9 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        {# <label for="toggle"></label> #}
     </button>
-    {# <input id='toggle' type="checkbox"> #}
     <div id='nav-buttons-wrapper' class='nav-buttons-wrapper'>
       <ul class='nav-buttons'>
         {% for element in navbar_elements|sort(attribute='order') if element.show_in_navbar == 1 %}
@@ -24,9 +22,9 @@
         {% endfor %}
         </ul>         
     </div>
+    <p class="navbar__title" >{{ title }}</p>
      <a class="navbar__logo" href="http://www.chicagotribune.com">
         <img class="logo" src="img/chicago-tribune-logo.svg" title="Chicago Tribune" alt="Chicago Tribune" itemprop="publisher" content="Chicago Tribune"/>
     </a>
-    <p class="navbar__title" >{{ title }}</p>
   </div>
 </nav>

@@ -1,3 +1,8 @@
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 2px 25px rgba(white,.5);
+  }
+}
 
 // Give the navbar space to exist without overlapping anything at the top of the page.
 // body{
@@ -26,7 +31,9 @@
 	// .navbar__toggle{
 	// 	display:block;
 	// }
-
+	&__highlight{
+		display:none;
+	}
 	&__logo{
 		display:block;
 		width: 100%;
@@ -39,8 +46,7 @@
 	&__title{
 		@include display_text(sans-serif);
 		color: white;
-		text-align: right;
-		flex: 1; // This makes it fill the remaining width, which let's me right-align the text.
+		flex: 1; // This makes it fill the remaining width
 		margin: 0;
 		font-size: 25px;
 		font-weight: 400;
@@ -56,6 +62,9 @@
 	    border-radius: 4px;
 		cursor:pointer;
 		position:relative;
+
+  		box-shadow: 0 0 0 0 rgba(white,.5);
+		animation: pulse 1.25s 5 ease-in;
 
 		&:hover, &:focus{ 
 			background: rgba(black, .4); 
@@ -167,7 +176,32 @@
 	}
 
 
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 2px 25px rgba(white,.5);
+  }
+}
+
 @media all and (min-width: $tablet-min-width){
+	.navbar__highlight{
+		display:block;
+		box-sizing:border-box;
+		height:50px;
+		width: 50px;
+		border-radius: 50%;
+		// border-color: red;
+
+		position:absolute;
+		top:50%;
+		left:$nav_padding_h;
+		transform: translate(-3px,-50%);
+
+  		box-shadow: 0 0 0 0 rgba(white,.5);
+		animation: pulse 1.25s 5 ease-in;
+
+	}
+
 	.navbar__title{
 		display:block;
 	}
