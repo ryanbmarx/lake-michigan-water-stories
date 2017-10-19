@@ -106,11 +106,14 @@ window.addEventListener('load', function() {
                 // watchSlidesVisibility:true
             }); 
 
-            slideshows[index].querySelector('.swiper-button-next').addEventListener('click', e => {
+            console.log(slideshows, index)
+            swiper.querySelector('.swiper-button-next').addEventListener('click', e => {
+                console.log('click next')
                 slideshows[index].slideNext();
             });
 
-            slideshows[index].querySelector('.swiper-button-prev').addEventListener('click', e => {
+            swiper.querySelector('.swiper-button-prev').addEventListener('click', e => {
+                console.log('click prev')
                 slideshows[index].slidePrev();
             });            
         })

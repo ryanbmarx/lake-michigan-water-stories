@@ -102,6 +102,17 @@ $chart-margin:25px;
     padding: 0 25px;
 }
 
+// Add some design polish to the galleries so that 
+// photos of different heights don't look too weird
+// when transitioning.
+.swiper-container{
+	background: rgba(0,0,100,.05);
+	
+	.image figcaption{
+	    padding: 0 15px;
+	    box-sizing: border-box;
+	}
+}
 @import 'photos-and-arrangements';
 @import 'refers';
 @import 'met-promo';
