@@ -91,6 +91,17 @@ $chart-margin:25px;
 @import 'graphic-embed';
 @import 'videos';
 @import 'swiper';
+// A couple little tweaks to the fwd/back buttons
+// They need more meat on the bones for clicking.
+
+.swiper-button-prev{left:0;}
+.swiper-button-next{right:0;}
+.swiper-button-prev, .swiper-button-next {
+    top: 0;
+    height: 100%;
+    padding: 0 25px;
+}
+
 @import 'photos-and-arrangements';
 @import 'refers';
 @import 'met-promo';
