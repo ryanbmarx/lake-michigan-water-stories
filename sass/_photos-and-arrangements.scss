@@ -18,7 +18,7 @@ $design_5_large_width: 60%;
 		}
 	}
 
-	&--1, &--2, &--5{
+	&--1, &--2, &--5, &--6{
 		display:block;
 
 		.image{
@@ -64,6 +64,16 @@ $design_5_large_width: 60%;
 				width: calc(#{$design_5_large_width} - #{$photo_arrangement_gutter});
 			}
 			.image:last-child{
+				width: #{100% - $design_5_large_width};
+			}
+		}
+
+		&--6 {
+			display:flex;
+			.image:last-child{
+				width: calc(#{$design_5_large_width} - #{$photo_arrangement_gutter});
+			}
+			.image:first-child{
 				width: #{100% - $design_5_large_width};
 			}
 		}
