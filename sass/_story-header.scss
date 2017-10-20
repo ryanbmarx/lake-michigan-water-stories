@@ -272,8 +272,13 @@
 		}
 	}
 	
+	.story-header--disparity{
+		.story-header__video video{
+			// A tweak to match the video better.
+			transform: translate(-50%,50%);
+		}
+	}
 	
-
 	.story-header .social-menu{
 		// Give the overall social shares a little different look on desktop. 
 		// These styles are extensions of the standard social shares, as seen 
