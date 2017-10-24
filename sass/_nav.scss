@@ -4,11 +4,6 @@
   }
 }
 
-// Give the navbar space to exist without overlapping anything at the top of the page.
-// body{
-// 	padding-top:$nav_height + $nav_padding_v * 2;
-// }
-
 .navbar{
 	background: rgba($nav_background_color, .92);
 	box-shadow: 0 2px 6px rgba(black, .35);
@@ -75,7 +70,7 @@
 		position:relative;
 
   		box-shadow: 0 0 0 0 rgba(white,.5);
-		animation: pulse 1.25s 5 ease-in;
+		animation: pulse 1.25s 2 ease-in;
 
 		&:hover, &:focus{ 
 			background: rgba(black, .4); 
@@ -186,13 +181,6 @@
 		text-decoration:none;
 	}
 
-
-
-@keyframes pulse {
-  to {
-    box-shadow: 0 0 2px 25px rgba(white,.5);
-  }
-}
 
 @media all and (min-width: $tablet-min-width){
 	.navbar__highlight{
