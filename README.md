@@ -229,6 +229,42 @@ When you open up the template, you'll see a line that says `{% set part = "XXX" 
     - Update the nav elements in the "navbar_elements" tab in the spreadsheet. This will populate both the sticky nav bar at the top and the larger box at the end of each story.
     - To reiterate, you don't need to do anything to pull in the story content besides loading it into the Google Doc (not spreadsheet) and setting the part variable.
 
+TODO CHECKLIST
+--------------
+
+ASSETS
+======
+
+[] Main bars and sidebars all are accounted for
+[] Are there embedded assets that need a standalone presence (if only for programming and sharing?)
+[] Have you written all the necessary embedable refers?
+[] Is there a feedback collection mechanism?
+
+ANALYTICS/ETC.
+==============
+
+[] Confirm Chartbeat is working
+[] Confirm Omniture is working
+[] Is the paywall/meter operating?
+[] Collected all custom link tracks and sent to Data Team
+[] Custom link generated for subscribe/support refer
+[] Are well-researched SEO keywords being used (maybe different set for each story)
+[] Is the base url, and sub_urls well made and rich in SEO?
+
+
+SOCIAL/SEO
+==========
+
+[] Do you have tweets for each story
+[] Do you have facebooks for each story
+[] Have you validated social cards and structured data through FB, Twitter and Google?
+
+P2P
+===
+
+[] Story link for each asset
+[] Redirects made, with extra attention paid to SEO-friendly and misspelled variants
+
 Assumptions
 -----------
 
