@@ -12,6 +12,12 @@ $design_5_large_width: 60%;
 	align-items: stretch;
 	margin: 25px 0;
 
+
+	&__override-caption{
+		@include agate();
+		width: 100%;
+		box-sizing: border-box;
+	}
 	&--0{
 		.image{
 			@include distribute_across_columns(1, $photo_arrangement_gutter);

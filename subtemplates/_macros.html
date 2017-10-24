@@ -8,7 +8,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro photo_arr(design_str, p2p_collection_slug_str, image_width, display_caption_bool, display_credit_bool, add_class_str) %}
+{% macro photo_arr(design_str, p2p_collection_slug_str, image_width, display_caption_bool, display_credit_bool, add_class_str, override_caption) %}
   <div class='photo-arr photo-arr--{{ design_str }} {{ add_class_str }}'>
   {% if design_str|int == 0 %}
     {# ZERO means a gallery #}
@@ -19,6 +19,9 @@
     {% for img in get_p2p_content_item(p2p_collection_slug_str)['related_items'][0:limit] %}
       {{ add_p2p_photo(img['slug'], "image--lazy", image_width, display_caption_bool, display_credit_bool) }}
     {% endfor %}
+  {% endif %}
+  {% if override_caption %}
+    <p class='photo-arr__override-caption'>{{ override_caption }}</p>
   {% endif %}
   </div>
   {# {{ get_p2p_content_item(p2p_collection_slug_str) }} #}

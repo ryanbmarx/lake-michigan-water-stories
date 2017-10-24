@@ -120,20 +120,33 @@
         {% set width = 650 %}
     {% endif %}
 
-    {% if s.display_caption == false or s.display_caption|upper == "FALSE" %}
+    {% if s.override_caption %}
+        {# If there is an override caption, then let it override the captions and credit #}
+        {% set override_caption = s.override_caption %}
         {% set display_caption = False %}
-    {% else %}
-        {% set display_caption = True %}
-    {% endif %}
-
-    {% if s.display_credit == false or s.display_credit|upper == "FALSE" %}
         {% set display_credit = False %}
+    
     {% else %}
-        {% set display_credit = True %}
+        {# If there is no override caption, then decide about the other elements #}
+        {% set override_caption = False %}
+        
+        {% if s.display_caption == false or s.display_caption|upper == "FALSE" %}
+            {% set display_caption = False %}
+        {% else %}
+            {% set display_caption = True %}
+        {% endif %}
+
+        {% if s.display_credit == false or s.display_credit|upper == "FALSE" %}
+            {% set display_credit = False %}
+        {% else %}
+            {% set display_credit = True %}
+        {% endif %}
+
     {% endif %}
     
+
     {% if s.design and s.slug %}
-        {{ photo_arr(s.design, s.slug, width, display_caption, display_credit, add_class)}}
+        {{ photo_arr(s.design, s.slug, width, display_caption, display_credit, add_class, override_caption)}}
     {% endif %}
 
 {% elif type|upper == "BREAKER" %}

@@ -119,6 +119,8 @@ PHOTO ARRANGEMENTS
 - 5: Just like #2, except the first image is 75% width, the other is 25%.
 - 6: Just like #2, except the first image is 25% width, the other is 75%.
 
+If you wish to show a single caption for the whole design at the bottom, then enter a caption and credit fot the override caption. This will automatically set `display_credit` and `display_caption` to `False`. BEWARE: This code has not (yet) been tested with the gallery option.
+
 AML Example:
 
     type: photo_arr
@@ -127,6 +129,7 @@ AML Example:
     display_credit: <True/False> (optional, for the photos)
     display_caption: <True/False> (optional, for the photos)
     add_class: <css class> (optional)
+    override_caption: <Caption & credit, or "False"> (optional)
     close_river: <True/False> (optional)
 
 
