@@ -15,8 +15,14 @@
   <meta name="twitter:creator" content="@pmocwriter" />
   <meta name="twitter:creator" content="@AngelaTCR" />
 
-  <meta property="og:url" content="http://{{ ROOT_URL }}/{{ PATH }}" />
   <meta name="keywords" content="{% block keywords %}{{ keywords }}{% endblock %}">
+  
+  {# Universal OG #}
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://{{ ROOT_URL }}/{{ PATH }}" />
+
+  {# GOOGLE STRUCTURED DATA #}
+  
   {% block opengraph_story_specific scoped %}
 
     <meta name="twitter:title" content="{{ title }}" />
@@ -24,6 +30,7 @@
     <meta name="twitter:image" content="{{ og_image }}" />
     <meta name="twitter:image:alt" content="{{ og_image_alt_text }}" />
     {# OPENGRAPH #}
+    
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:description" content="{{ og_description }}" />
     <meta property="og:image" content="{{ og_image }}" />
@@ -37,6 +44,8 @@
     #}
     {% block story_header scoped %}
     <article>
+    <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="http://{{ ROOT_URL }}/{{ PATH }}" />
+
       {% set part = part %}
       
       {% if show_video_bool %}
@@ -107,7 +116,8 @@
               </ul>
               <div class='byline'>
                 <p class='byline-name'>By {% block byline %}{% endblock byline%}</p>
-                <time class='byline-publish-date' itemprop="datePublished">Published: {{ publish_date|xldate_to_datetime|format_date("%B %d, %Y") }}</time>
+                <time class='byline-publish-date byline-publish-date--publish' itemprop="datePublished">Published: {{ date_published|xldate_to_datetime|format_date("%b. %d, %Y") }}</time>
+                <em><time class='byline-publish-date byline-publish-date--update' itemprop="dateModified">Updated: {{ date_updated|xldate_to_datetime|format_date("%b. %d, %Y") }}</time></em>
               </div>
             </div>
           </div>
