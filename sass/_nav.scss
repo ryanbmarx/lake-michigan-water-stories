@@ -10,7 +10,7 @@
 // }
 
 .navbar{
-	background: rgba($trib-blue2, .92);
+	background: rgba($nav_background_color, .92);
 	box-shadow: 0 2px 6px rgba(black, .35);
 	position: fixed;
 	top:0;
@@ -28,9 +28,7 @@
 		height: $nav_height;
 
 	}
-	// .navbar__toggle{
-	// 	display:block;
-	// }
+
 	&__highlight{
 		display:none;
 	}
@@ -46,13 +44,23 @@
 	&__title{
 		@include display_text(sans-serif);
 		color: white;
-		flex: 1; // This makes it fill the remaining width
+		//	flex: 1; // This makes it fill the remaining width
 		margin: 0;
 		font-size: 25px;
 		font-weight: 400;
 		display:none;
 		text-transform: uppercase;
 	}
+
+	&__top-buttons{
+		// This will keep things aligned even when the buttons are hidden.
+		flex: 1;
+	}
+	
+	&__top-button{
+		display:none;
+	}
+
 	&__toggle{
 	    border: 1px solid transparent;
 	    margin-right: 15px;
@@ -118,7 +126,7 @@
     left: -400px;
     top: $nav_height + $nav_padding_v * 2;
     
-	background:$trib-blue2;
+	background:$nav_background_color;
 	opacity:0;
 
     width: 100%;
@@ -198,18 +206,59 @@
 		transform: translate(-3px,-50%);
 
   		box-shadow: 0 0 0 0 rgba(white,.5);
-		animation: pulse 1.25s 5 ease-in;
+		animation: pulse 1.25s 2 ease-in;
 
 	}
 
 	.navbar__title{
 		display:block;
+		margin-right: 15px;
 	}
+
 }
 
 @media all and (min-width: $desktop-min-width){
 	.navbar__title{
 		font-size: 30px;
+	}
+
+	.navbar__top-buttons{
+		display:flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.navbar__top-button{
+		display:block;
+		max-width: 150px;
+		text-align: center;
+		background: rgba(white, .4);
+		margin: 0 15px 0 0;
+		padding: 10px;
+	
+		&:last-child{
+			margin: 0;
+		}
+
+		a{
+			@include sans-serif-text(14px, 1em, normal);
+			text-decoration: none;
+			color:white;
+		}
+
+		&--highlight{
+			background: white;
+			color:black;
+
+					a{
+			// @include sans-serif-text(14px, 1em, normal);
+			// text-decoration: none;
+			color:$nav_background_color;
+		}
+		}
+
+
 	}
 }
 

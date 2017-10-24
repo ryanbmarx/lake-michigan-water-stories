@@ -22,9 +22,40 @@
         {% endfor %}
         </ul>         
     </div>
-    <p class="navbar__title" >{{ title }}</p>
-     <a class="navbar__logo" href="http://www.chicagotribune.com">
-        <img class="logo" src="img/chicago-tribune-logo.svg" title="Chicago Tribune" alt="Chicago Tribune" itemprop="publisher" content="Chicago Tribune"/>
-    </a>
+    <ul class='navbar__top-buttons'>
+        {# <p class="navbar__title" >{{ title }}</p> #}
+        {% for element in navbar_elements|sort(attribute='order') if element.show_button == 1 %}
+          {% if element.part == part %}
+            {% set highlight_class = 'navbar__top-button--highlight'%}
+          {% else %}
+            {% set highlight_class = '' %}
+          {% endif %}
+          <li class='navbar__top-button {{ highlight_class }}'>
+            <a href='{{ element.url }}'>{{ element.prefix }}</a>
+          </li>
+        {% endfor %}
+    </ul>
+    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <a class="navbar__logo" href="http://www.chicagotribune.com" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <img src="img/chicago-tribune-logo.svg" title="Chicago Tribune" alt="Chicago Tribune" />
+        <meta itemprop="url" content="https://google.com/logo.jpg">
+        <meta itemprop="width" content="600">
+        <meta itemprop="height" content="60">
+      </a>
+      <meta itemprop="name" content="Chicago Tribune">
+    </div>
   </div>
 </nav>
+{# 
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <a class="navbar__logo" href="http://www.chicagotribune.com" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <img src="img/chicago-tribune-logo.svg" title="Chicago Tribune" alt="Chicago Tribune" />
+      <meta itemprop="url" content="https://google.com/logo.jpg">
+      <meta itemprop="width" content="600">
+      <meta itemprop="height" content="60">
+    </a>
+    <meta itemprop="name" content="Chicago Tribune">
+  </div>
+
+
+ #}
