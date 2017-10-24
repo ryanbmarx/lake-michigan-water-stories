@@ -38,7 +38,10 @@
 		max-width: $logo_width;
 	    transform: translate(0,2px); // This cheats the logo down a bit so alignment with other items is tidy.
 
-		img{ width: 100%; }
+		img{ 
+			width: 100%; 
+			height: $nav-height;;
+		}
 	}
 
 	&__title{
