@@ -207,6 +207,8 @@ body{ margin: 0; padding:0; }
 .trb_cm_so[data-role="cm_container"]{
 	max-height:0;
 	transition: max-height 400ms ease;
+	box-sizing: border-box;
+	padding: 0 15px;
 }
 
 
