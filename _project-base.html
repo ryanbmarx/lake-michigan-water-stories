@@ -117,7 +117,7 @@
               <div class='byline'>
                 <p class='byline-name'>By {% block byline %}{% endblock byline%}</p>
                 <time class='byline-publish-date byline-publish-date--publish' itemprop="datePublished">Published: {{ date_published|xldate_to_datetime|format_date("%b. %d, %Y") }}</time>
-                <em><time class='byline-publish-date byline-publish-date--update' itemprop="dateModified">Updated: {{ date_updated|xldate_to_datetime|format_date("%b. %d, %Y") }}</time></em>
+                {# <em><time class='byline-publish-date byline-publish-date--update' itemprop="dateModified">Updated: {{ date_updated|xldate_to_datetime|format_date("%b. %d, %Y") }}</time></em> #}
               </div>
             </div>
           </div>
