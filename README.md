@@ -238,7 +238,9 @@ ASSETS
 [] Main bars and sidebars all are accounted for
 [] Are there embedded assets that need a standalone presence (if only for programming and sharing?)
 [] Have you written all the necessary embedable refers?
+[] Have all refer URLs been tested? Especially those with download links.
 [] Is there a feedback collection mechanism?
+
 
 ANALYTICS/ETC.
 ==============
@@ -264,6 +266,8 @@ P2P
 
 [] Story link for each asset
 [] Redirects made, with extra attention paid to SEO-friendly and misspelled variants
+[] Have you tested all redirects and story link urls?
+
 
 Assumptions
 -----------
