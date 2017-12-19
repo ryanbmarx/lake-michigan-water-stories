@@ -219,5 +219,5 @@
 {% endmacro %}
 
 {% macro add_author(name, email) %}
-  <a itemprop="author name" {% if email %}href="mailto:{{- email -}}?subject=Regarding: {{ title }}"{% endif %}>{{- name -}}</a>
+  <span itemprop="author"><a {% if email %}href="mailto:{{- email -}}?subject=Regarding: {{ title }}"{% endif %}><span itemprop="name">{{- name -}}</span></a></span>
 {% endmacro%}
