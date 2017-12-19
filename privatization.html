@@ -27,8 +27,10 @@
     {% set date_published_iso = date_published_privatization|xldate_to_datetime|format_date("%Y-%m-%dT%H:%M:%S-06:00") %}
     {% set date_published_readable = date_published|xldate_to_datetime|format_date("%b. %d, %Y") %}
     
+      <meta itemprop="datePublished" content="{{ date_published_iso }}" datetime="{{ date_published_iso }}" />
+
     {# Add a dateModified here if the story is updated #}
-    <time class='byline-publish-date byline-publish-date--publish' itemprop="datePublished" content="{{ date_published_iso }}" datetime="{{ date_published_iso }}">Published: {{ date_published_readable }}</time>
+    <time class='byline-publish-date byline-publish-date--publish' itemprop="dateModified" content="{{ date_published_iso }}" datetime="{{ date_published_iso }}">Published: {{ date_published_readable }}</time>
 {% endblock published_time %}
 
 
