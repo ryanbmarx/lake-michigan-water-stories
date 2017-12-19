@@ -75,11 +75,7 @@ AML example:
 GRAPHICS
 ========
 
-Graphics are loaded in iFrames using the NPR-built [pym.js](https://github.com/nprapps/pym.js/). There are three primary tarbell repos which serve up graphics, and each repo/project must be published and republished seperately. The projects are:
-    
-    - (Most static graphics) https://tribune.unfuddle.com/git/tribune_property-tax-assessments-cook-county/
-    - (Most interactives, including lookup, township and the over/under map) https://tribune.unfuddle.com/git/tribune_property-tax-assessments-map/
-    - (The scatterplot) https://tribune.unfuddle.com/git/tribune_property-tax-assessments-broken-model-scatterplots/
+Graphics are loaded in iframes using the NPR-built [pym.js](https://github.com/nprapps/pym.js/). There are three primary tarbell repos which serve up graphics, and each repo/project must be published and republished seperately. The projects are:
 
 Each graphic asset requires a type, unique id and url for the iframe. The optional `add_class` attribute simply takes the string provided and inserts it into the class attribute of the graphic's wrapper. This is available in most content types.
 
@@ -246,6 +242,7 @@ ANALYTICS/ETC.
 ==============
 
 [] Confirm Chartbeat is working
+[] Change story slug for Omniture tag
 [] Confirm Omniture is working
 [] Is the paywall/meter operating?
 [] Collected all custom link tracks and sent to Data Team
