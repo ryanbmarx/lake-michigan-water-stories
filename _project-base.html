@@ -8,6 +8,8 @@
 {% block opengraph scoped %}
   {% set part = part %}
 
+  <link rel="canonical" content="http://{{ ROOT_URL }}/{{ PATH }}" />
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@chicagotribune" />
   <meta name="twitter:creator" content="@kcecireyes" />
@@ -165,15 +167,22 @@
     <script src="http://{{ ROOT_URL }}/js/app.min.js"></script>
 {% endblock scripts %}
 
-{% block chartbeat %}
+{% block chartbeat scoped%}
+    {% set part = part %}
+
     <script type='text/javascript'>
     var _sf_async_config = _sf_async_config || {};
+
+    var pageTitle = "{{ part }} ({{ title }})";
+
     /** CONFIGURATION START **/
-    _sf_async_config.uid = 25745 /* TRONC USER ID */
-    _sf_async_config.domain = 'chicagotribune.com'; /* Should this just be chicagotribune.com */
+    _sf_async_config.uid = 25745;
+    _sf_async_config.domain = 'chicagotribune.com'; 
     _sf_async_config.useCanonical = true;
-    _sf_async_config.sections = 'News'; //CHANGE THIS
-    _sf_async_config.authors = 'Tribune Staff'; //CHANGE THIS
+    _sf_async_config.sections = 'News, Water Drain';
+    _sf_async_config.authors = 'Tribune Staff, Cecilia Reyes, Ted Gregory, Patrick M. O\'Connell';
+    _sf_async_config.title = pageTitle;
+
     /** CONFIGURATION END **/
     (function() {
         function loadChartbeat() {
