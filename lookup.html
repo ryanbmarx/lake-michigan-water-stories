@@ -18,6 +18,7 @@
     {{ add_author("Cecilia Reyes", "creyes@chicagotribune.com")|trim }}, 
     {{ add_author("Chad Yoder", "cyoder@chicagotribune.com")|trim }}
 {% endblock byline%}
+
 {% block opengraph_story_specific scoped %}
     <meta property="og:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
     <meta property="og:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />

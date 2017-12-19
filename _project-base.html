@@ -25,6 +25,14 @@
 
   {# GOOGLE STRUCTURED DATA #}
   
+  {% block meta_publish_date %}
+
+    {% set date_published = date_published_initial|xldate_to_datetime %}
+    {% set date_published_iso = date_published|format_date("%Y-%m-%dT%H:%M:%S-06:00") %}
+    <meta property="article:published_time" content="{{ date_published_iso }}" datetime="{{ date_published_iso }}" />
+
+  {% endblock%}
+
   {% block opengraph_story_specific scoped %}
 
     <meta name="twitter:title" content="{{ title }}" />
@@ -45,7 +53,7 @@
     {{ ad('leaderboard', false) }} 
     #}
     {% block story_header scoped %}
-    <article>
+    <article itemprop="mainEntityOfPage">
     <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="http://{{ ROOT_URL }}/{{ PATH }}" />
 
       {% set part = part %}
@@ -118,8 +126,13 @@
               </ul>
               <div class='byline'>
                 <p class='byline-name'>By {% block byline %}{% endblock byline%}</p>
-                <time class='byline-publish-date byline-publish-date--publish' itemprop="datePublished">Published: {{ date_published|xldate_to_datetime|format_date("%b. %d, %Y") }}</time>
-                {# <em><time class='byline-publish-date byline-publish-date--update' itemprop="dateModified">Updated: {{ date_updated|xldate_to_datetime|format_date("%b. %d, %Y") }}</time></em> #}
+                {% block published_time %}
+                  {% set date_published = date_published_initial|xldate_to_datetime %}
+                  {% set date_published_iso = date_published|xldate_to_datetime|format_date("%Y-%m-%dT%H:%M:%S-06:00") %}
+                  {% set date_published_readable = date_published|xldate_to_datetime|format_date("%b. %d, %Y") %}
+
+                  <time class='byline-publish-date byline-publish-date--publish' itemprop="datePublished" content="{{ date_published_iso }}" datetime="{{ date_published_iso }}">Published: {{ date_published_readable }}</time>
+                {% endblock published_time %}
               </div>
             </div>
           </div>

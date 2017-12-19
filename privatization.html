@@ -22,7 +22,27 @@
     {{ add_author("Patrick M. O'Connell", "poconnell@chicagotribune.com")|trim }}
 {% endblock byline%}
 
+{% block published_time %}
+    {% set date_published = date_published_privatization|xldate_to_datetime %}
+    {% set date_published_iso = date_published_privatization|xldate_to_datetime|format_date("%Y-%m-%dT%H:%M:%S-06:00") %}
+    {% set date_published_readable = date_published|xldate_to_datetime|format_date("%b. %d, %Y") %}
+    
+    {# Add a dateModified here if the story is updated #}
+    <time class='byline-publish-date byline-publish-date--publish' itemprop="datePublished" content="{{ date_published_iso }}" datetime="{{ date_published_iso }}">Published: {{ date_published_readable }}</time>
+{% endblock published_time %}
+
+
+{% block meta_publish_date %}
+
+    {% set date_published = date_published_privatization|xldate_to_datetime %}
+    {% set date_published_iso = date_published|xldate_to_datetime|format_date("%Y-%m-%dT%H:%M:%S-06:00") %}
+    <meta property="article:published_time" content="{{ date_published_iso }}" datetime="{{ date_published_iso }}" />
+
+{% endblock%}
+
+
 {% block opengraph_story_specific scoped %}
+
     <meta property="og:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
     <meta property="og:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />
     <meta property="og:image" content="{{ headlines[part ~ '_thumb']['value'] }}" />
