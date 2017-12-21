@@ -8,8 +8,8 @@
 {% set show_video_bool = False %}
 {% block video_poster %}{{ part }}{% endblock video_poster %}
 {% block video_file_name %}{{ part }}{% endblock video_file_name %}
-{% block mobile_image_alt_text %}{{ headlines[part ~ "_mobile_alt_text"]['value']|process_text() }}{% endblock mobile_image_alt_text %}
-{% block video_credit %}{{ headlines[part ~ "_video_credit"]['value']|process_text() }}{% endblock %}
+{% block mobile_image_alt_text %}{{ headlines[part ~ "_mobile_alt_text"]['value']|process_text(False) }}{% endblock mobile_image_alt_text %}
+{% block video_credit %}{{ headlines[part ~ "_video_credit"]['value']|process_text(False) }}{% endblock %}
 
 {# TEXT BLOCKS  #}
 {% block headline %}{{ headlines[part ~ "_headline"]['value'] }}{% endblock headline %}

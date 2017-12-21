@@ -74,7 +74,7 @@
             {% block video_background %}
 
             {% set bg_style = 'background:url(img/posters/' ~ self.video_poster() ~ '.jpg) bottom center no-repeat;background-size:cover;' %}
-            <div class='story-header__display' style="{{ bg_style|process_text }}">
+            <div class='story-header__display' style="{{ bg_style|process_text(False) }}">
               {% if show_video_bool == True %}
                 <div class='story-header__video'>
                     <video class='header-video header-video' autoplay muted loop playsinline

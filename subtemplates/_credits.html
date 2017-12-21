@@ -48,7 +48,7 @@
 	] %}
 		{%- for role in roles -%}
 			<dt>{{ role.label|upper }}</dt>	
-			<dd>{{ add_people(role.id|upper)|clean_up_commas|process_text }}</dd>
+			<dd>{{ add_people(role.id|upper)|clean_up_commas|process_text(False) }}</dd>
 		{%- endfor -%}
 		</dl>
 	</div>
