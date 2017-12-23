@@ -24,13 +24,13 @@
 {% endblock byline%}
 
 {% block opengraph_story_specific scoped %}
-    <meta property="og:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
+    <meta property="og:title" content="{{ headlines[part ~ '_dek']['value'] }}" />
     <meta property="og:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />
     <meta property="og:image" content="{{ headlines[part ~ '_thumb']['value'] }}" />
     <meta name="description" content="{{ headlines[part ~ '_seo_description']['value'] }}" />
     <meta property="og:image:alt" content="{{ headlines[part ~ '_thumb_alt_text']['value'] }}" />
 
-    <meta name="twitter:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
+    <meta name="twitter:title" content="{{ title }} | {{ headlines[part ~ '_dek']['value'] }}" />
     <meta name="twitter:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />
     <meta name="twitter:image" content="{{ headlines[part ~ '_thumb']['value'] }}" />
     <meta name="twitter:image:alt" content="{{ headlines[part ~ '_thumb_alt_text']['value'] }}" />
