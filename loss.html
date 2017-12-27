@@ -8,8 +8,8 @@
 {% set show_video_bool = True %}
 {% block video_poster %}{{ part }}{% endblock video_poster %}
 {% block video_file_name %}{{ part }}{% endblock video_file_name %}
-{% block mobile_image_alt_text %}{{ headlines[part ~ "_mobile_alt_text"]['value']|process_text(False) }}{% endblock mobile_image_alt_text %}
-{% block video_credit %}{{ headlines[part ~ "_video_credit"]['value']|process_text(False) }}{% endblock video_credit %}
+{% block mobile_image_alt_text %}{{ headlines[part ~ "_mobile_alt_text"]['value']|process_text2(False) }}{% endblock mobile_image_alt_text %}
+{% block video_credit %}{{ headlines[part ~ "_video_credit"]['value']|process_text2(False) }}{% endblock video_credit %}
 
 {# TEXT BLOCKS  #}
 {% block headline %}{{ headlines[part ~ "_headline"]['value'] }}{% endblock headline %}
@@ -24,14 +24,14 @@
 {% endblock byline%}
 
 {% block opengraph_story_specific scoped %}
-    <meta property="og:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
+    <meta property="og:title" content="{{ headlines[part ~ '_dek']['value'] }}" />
     <meta property="og:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />
     <meta property="og:image" content="{{ headlines[part ~ '_thumb']['value'] }}" />
     <meta property="og:image:alt" content="{{ headlines[part ~ '_thumb_alt_text']['value'] }}" />
 
     <meta name="description" content="{{ headlines[part ~ '_seo_description']['value'] }}" />
 
-    <meta name="twitter:title" content="{{ title }} | {{ headlines[part ~ '_headline']['value'] }}" />
+    <meta name="twitter:title" content="{{ title }} | {{ headlines[part ~ '_dek']['value'] }}" />
     <meta name="twitter:description" content="{{ headlines[part ~ '_og_description']['value'] }}" />
     <meta name="twitter:image" content="{{ headlines[part ~ '_thumb']['value'] }}" />
     <meta name="twitter:image:alt" content="{{ headlines[part ~ '_thumb_alt_text']['value'] }}" />

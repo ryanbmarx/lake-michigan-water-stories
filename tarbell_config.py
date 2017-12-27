@@ -43,6 +43,19 @@ CONTENT_ITEMS_WORKSHEET = 'p2p_content_items'
 # text and other formatting filters #
 ############################
 
+@blueprint.app_template_filter('process_text2')
+def process_text(text, smartquotes=True):
+    """
+    Return markup -- Moved this here because, for some reason, it does not like the smartypants argument for some people's machines.
+    """
+    if smartquotes:
+        text = smartypants.smartypants(text)
+
+    if type(text).__name__ == 'Markup':
+        return text
+
+    return Markup(text)
+
 @blueprint.app_template_filter('get_photo_limit')
 def get_photo_limit(design):
     """
@@ -382,7 +395,7 @@ get_drive_api_stuff()
 DEFAULT_CONTEXT.update(**get_extra_context())
 
 
-@register_hook('preview')
+# @register_hook('preview')
 @register_hook('generate')
 def refresh_archie(site, one=False, two=False):
     """
